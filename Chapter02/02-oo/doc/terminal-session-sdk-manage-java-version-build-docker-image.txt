@@ -1,0 +1,939 @@
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ cd Chapter02/02-oo/
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo$ docker login
+Authenticating with existing credentials...
+WARNING! Your password will be stored unencrypted in /home/willem/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo$ ./mvnw spring-boot:build-image
+bash: ./mvnw: No such file or directory
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo$ ls -la
+total 1820
+drwxrwxr-x 3 willem willem    4096 apr  8 21:04 .
+drwxrwxr-x 5 willem willem    4096 mrt 18 16:55 ..
+drwxr-xr-x 5 willem willem    4096 apr  8 21:24 catalog-service
+-rw-r--r-- 1 willem willem   68234 apr  8 21:03 catalog-service.zip
+-rwxrwxr-x 1 willem willem 1766226 apr  8 20:49 hello
+-rw-rw-r-- 1 willem willem     323 apr  8 20:49 hello.go
+-rw-rw-r-- 1 willem willem    4364 apr  8 21:02 READMe.md
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo$ cd catalog-service/
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ ls -la
+total 48
+drwxr-xr-x 5 willem willem  4096 apr  8 21:24 .
+drwxrwxr-x 3 willem willem  4096 apr  8 21:04 ..
+-rw-r--r-- 1 willem willem   848 apr  8 21:03 HELP.md
+drwxr-xr-x 3 willem willem  4096 apr  8 21:03 .mvn
+-rwxr-xr-x 1 willem willem 10284 apr  8 21:03 mvnw
+-rw-r--r-- 1 willem willem  6734 apr  8 21:03 mvnw.cmd
+-rw-r--r-- 1 willem willem  1254 apr  8 21:03 pom.xml
+drwxr-xr-x 4 willem willem  4096 apr  8 21:03 src
+drwxrwxr-x 9 willem willem  4096 apr  8 21:11 target
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ ./mvnw spring-boot:build-image
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------------< com.polarbookshop:catalog-service >------------------
+[INFO] Building catalog-service 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] >>> spring-boot-maven-plugin:3.0.5:build-image (default-cli) > package @ catalog-service >>>
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.0:resources (default-resources) @ catalog-service ---
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO]
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ catalog-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.532 s
+[INFO] Finished at: 2023-04-08T22:18:51+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.10.1:compile (default-compile) on project catalog-service: Fatal error compiling: error: invalid target release: 17 -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ java -XshowSettings:properties --version
+Property settings:
+    awt.toolkit = sun.awt.X11.XToolkit
+    file.encoding = UTF-8
+    file.separator = /
+    java.awt.graphicsenv = sun.awt.X11GraphicsEnvironment
+    java.awt.printerjob = sun.print.PSPrinterJob
+    java.class.path =
+    java.class.version = 55.0
+    java.home = /home/willem/.sdkman/candidates/java/11.0.18-tem
+    java.io.tmpdir = /tmp
+    java.library.path = /usr/java/packages/lib
+        /usr/lib64
+        /lib64
+        /lib
+        /usr/lib
+    java.runtime.name = OpenJDK Runtime Environment
+    java.runtime.version = 11.0.18+10
+    java.specification.name = Java Platform API Specification
+    java.specification.vendor = Oracle Corporation
+    java.specification.version = 11
+    java.vendor = Eclipse Adoptium
+    java.vendor.url = https://adoptium.net/
+    java.vendor.url.bug = https://github.com/adoptium/adoptium-support/issues
+    java.vendor.version = Temurin-11.0.18+10
+    java.version = 11.0.18
+    java.version.date = 2023-01-17
+    java.vm.compressedOopsMode = Zero based
+    java.vm.info = mixed mode
+    java.vm.name = OpenJDK 64-Bit Server VM
+    java.vm.specification.name = Java Virtual Machine Specification
+    java.vm.specification.vendor = Oracle Corporation
+    java.vm.specification.version = 11
+    java.vm.vendor = Eclipse Adoptium
+    java.vm.version = 11.0.18+10
+    jdk.debug = release
+    line.separator = \n
+    os.arch = amd64
+    os.name = Linux
+    os.version = 5.19.0-38-generic
+    path.separator = :
+    sun.arch.data.model = 64
+    sun.boot.library.path = /home/willem/.sdkman/candidates/java/11.0.18-tem/lib
+    sun.cpu.endian = little
+    sun.cpu.isalist =
+    sun.desktop = gnome
+    sun.io.unicode.encoding = UnicodeLittle
+    sun.java.launcher = SUN_STANDARD
+    sun.jnu.encoding = UTF-8
+    sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+    sun.os.patch.level = unknown
+    user.country = US
+    user.dir = /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service
+    user.home = /home/willem
+    user.language = en
+    user.name = willem
+    user.timezone =
+
+openjdk 11.0.18 2023-01-17
+OpenJDK Runtime Environment Temurin-11.0.18+10 (build 11.0.18+10)
+OpenJDK 64-Bit Server VM Temurin-11.0.18+10 (build 11.0.18+10, mixed mode)
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ sdk list java | grep temurin
+
+######################################################################## 100,0%
+######################################################################## 100,0%
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ sdk list java | grep temurin
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ sdk list java | grep tem
+ Temurin       |     | 20           | tem     |            | 20-tem
+               |     | 19.0.2       | tem     |            | 19.0.2-tem
+               |     | 19.0.1       | tem     | installed  | 19.0.1-tem
+               |     | 18.0.2       | tem     | local only | 18.0.2-tem
+               |     | 17.0.6       | tem     |            | 17.0.6-tem
+               |     | 17.0.5       | tem     | installed  | 17.0.5-tem
+               | >>> | 11.0.18      | tem     | installed  | 11.0.18-tem
+               |     | 11.0.17      | tem     | installed  | 11.0.17-tem
+               |     | 8.0.362      | tem     |            | 8.0.362-tem
+               |     | 8.0.352      | tem     | installed  | 8.0.352-tem
+               |     | 8.0.345      | tem     |            | 8.0.345-tem
+Omit Identifier to install default version 17.0.6-tem:
+    $ sdk install java 17.0.6-tem
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ sdk current java
+
+Using java version 11.0.18-tem
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ sdk install 17.0.6-tem
+
+Stop! 17.0.6-tem is not a valid candidate.
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ sdk install java 17.0.6-tem
+
+Downloading: java 17.0.6-tem
+
+In progress...
+
+################################################################################################################################################################################################################################# 100,0%
+
+Repackaging Java 17.0.6-tem...
+
+Done repackaging...
+
+Installing: java 17.0.6-tem
+Done installing!
+
+Do you want java 17.0.6-tem to be set as default? (Y/n): n
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ sdk current java
+
+Using java version 11.0.18-tem
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ sdk env init
+.sdkmanrc created.
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ sdk env
+
+Using java version 11.0.18-tem in this shell.
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ vim .sdkmanrc
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ cat .sdkmanrc
+# Enable auto-env through the sdkman_auto_env config
+# Add key=value pairs of SDKs to use below
+java=17.0.6-tem
+
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ sdk env
+
+Using java version 17.0.6-tem in this shell.
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ java -XshowSettings:properties --version
+Property settings:
+    file.encoding = UTF-8
+    file.separator = /
+    java.class.path =
+    java.class.version = 61.0
+    java.home = /home/willem/.sdkman/candidates/java/17.0.6-tem
+    java.io.tmpdir = /tmp
+    java.library.path = /usr/java/packages/lib
+        /usr/lib64
+        /lib64
+        /lib
+        /usr/lib
+    java.runtime.name = OpenJDK Runtime Environment
+    java.runtime.version = 17.0.6+10
+    java.specification.name = Java Platform API Specification
+    java.specification.vendor = Oracle Corporation
+    java.specification.version = 17
+    java.vendor = Eclipse Adoptium
+    java.vendor.url = https://adoptium.net/
+    java.vendor.url.bug = https://github.com/adoptium/adoptium-support/issues
+    java.vendor.version = Temurin-17.0.6+10
+    java.version = 17.0.6
+    java.version.date = 2023-01-17
+    java.vm.compressedOopsMode = Zero based
+    java.vm.info = mixed mode, sharing
+    java.vm.name = OpenJDK 64-Bit Server VM
+    java.vm.specification.name = Java Virtual Machine Specification
+    java.vm.specification.vendor = Oracle Corporation
+    java.vm.specification.version = 17
+    java.vm.vendor = Eclipse Adoptium
+    java.vm.version = 17.0.6+10
+    jdk.debug = release
+    line.separator = \n
+    native.encoding = UTF-8
+    os.arch = amd64
+    os.name = Linux
+    os.version = 5.19.0-38-generic
+    path.separator = :
+    sun.arch.data.model = 64
+    sun.boot.library.path = /home/willem/.sdkman/candidates/java/17.0.6-tem/lib
+    sun.cpu.endian = little
+    sun.io.unicode.encoding = UnicodeLittle
+    sun.java.launcher = SUN_STANDARD
+    sun.jnu.encoding = UTF-8
+    sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+    sun.stderr.encoding = UTF-8
+    sun.stdout.encoding = UTF-8
+    user.country = US
+    user.dir = /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service
+    user.home = /home/willem
+    user.language = en
+    user.name = willem
+
+openjdk 17.0.6 2023-01-17
+OpenJDK Runtime Environment Temurin-17.0.6+10 (build 17.0.6+10)
+OpenJDK 64-Bit Server VM Temurin-17.0.6+10 (build 17.0.6+10, mixed mode, sharing)
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ ./mvnw spring-boot:build-image
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------------< com.polarbookshop:catalog-service >------------------
+[INFO] Building catalog-service 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] >>> spring-boot-maven-plugin:3.0.5:build-image (default-cli) > package @ catalog-service >>>
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.0:resources (default-resources) @ catalog-service ---
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO]
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ catalog-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service/target/classes
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.0:testResources (default-testResources) @ catalog-service ---
+[INFO] skip non existing resourceDirectory /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service/src/test/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ catalog-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service/target/test-classes
+[INFO]
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ catalog-service ---
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.polarbookshop.catalogservice.CatalogServiceApplicationTests
+22:32:23.898 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Neither @ContextConfiguration nor @ContextHierarchy found for test class [CatalogServiceApplicationTests]: using SpringBootContextLoader
+22:32:23.901 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader -- Could not detect default resource locations for test class [com.polarbookshop.catalogservice.CatalogServiceApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+22:32:23.901 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.polarbookshop.catalogservice.CatalogServiceApplicationTests]: CatalogServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:32:23.911 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using ContextCustomizers for test class [CatalogServiceApplicationTests]: [ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer]
+22:32:23.945 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider -- Identified candidate component class: file [/home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service/target/classes/com/polarbookshop/catalogservice/CatalogServiceApplication.class]
+22:32:23.951 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.polarbookshop.catalogservice.CatalogServiceApplication for test class com.polarbookshop.catalogservice.CatalogServiceApplicationTests
+22:32:23.988 [main] DEBUG org.springframework.test.context.util.TestContextSpringFactoriesUtils -- Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom TestExecutionListener classes or make the default TestExecutionListener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+22:32:23.989 [main] DEBUG org.springframework.test.context.util.TestContextSpringFactoriesUtils -- Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom TestExecutionListener classes or make the default TestExecutionListener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+22:32:23.990 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using TestExecutionListeners for test class [CatalogServiceApplicationTests]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, EventPublishingTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
+22:32:23.990 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener -- Before test class: class [CatalogServiceApplicationTests], class annotated with @DirtiesContext [false] with mode [null]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-04-08T22:32:24.133+02:00  INFO 18202 --- [           main] c.p.c.CatalogServiceApplicationTests     : Starting CatalogServiceApplicationTests using Java 17.0.6 with PID 18202 (started by willem in /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service)
+2023-04-08T22:32:24.134+02:00  INFO 18202 --- [           main] c.p.c.CatalogServiceApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-04-08T22:32:24.708+02:00  INFO 18202 --- [           main] c.p.c.CatalogServiceApplicationTests     : Started CatalogServiceApplicationTests in 0.7 seconds (process running for 1.115)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.121 s - in com.polarbookshop.catalogservice.CatalogServiceApplicationTests
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- maven-jar-plugin:3.3.0:jar (default-jar) @ catalog-service ---
+[INFO] Building jar: /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service/target/catalog-service-0.0.1-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:3.0.5:repackage (repackage) @ catalog-service ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO]
+[INFO] <<< spring-boot-maven-plugin:3.0.5:build-image (default-cli) < package @ catalog-service <<<
+[INFO]
+[INFO]
+[INFO] --- spring-boot-maven-plugin:3.0.5:build-image (default-cli) @ catalog-service ---
+[INFO] Building image 'docker.io/library/catalog-service:0.0.1-SNAPSHOT'
+[INFO]
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 1%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 3%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 4%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 5%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 6%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 9%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 11%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 13%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 15%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 25%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 37%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 47%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 53%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 59%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 63%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 68%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 80%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 87%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 100%
+[INFO]  > Pulled builder image 'paketobuildpacks/builder@sha256:55ef90e62bf96a81f77eba0fc906d19802a8647e343240c77621b3a4a77d5a83'
+[INFO]  > Pulling run image 'docker.io/paketobuildpacks/run:base-cnb' 27%
+[INFO]  > Pulling run image 'docker.io/paketobuildpacks/run:base-cnb' 100%
+[INFO]  > Pulled run image 'paketobuildpacks/run@sha256:b93a81a444084ff12acbbfbff6f1ad645125972d0f28613d7bedf1761327973b'
+[INFO]  > Executing lifecycle version v0.16.1
+[INFO]  > Using build cache volume 'pack-cache-0835c272a0bf.build'
+[INFO]
+[INFO]  > Running creator
+[INFO]     [creator]     ===> ANALYZING
+[INFO]     [creator]     Image with name "docker.io/library/catalog-service:0.0.1-SNAPSHOT" not found
+[INFO]     [creator]     ===> DETECTING
+[INFO]     [creator]     6 of 26 buildpacks participating
+[INFO]     [creator]     paketo-buildpacks/ca-certificates   3.6.0
+[INFO]     [creator]     paketo-buildpacks/bellsoft-liberica 10.0.0
+[INFO]     [creator]     paketo-buildpacks/syft              1.26.0
+[INFO]     [creator]     paketo-buildpacks/executable-jar    6.6.2
+[INFO]     [creator]     paketo-buildpacks/dist-zip          5.5.2
+[INFO]     [creator]     paketo-buildpacks/spring-boot       5.23.0
+[INFO]     [creator]     ===> RESTORING
+[INFO]     [creator]     ===> BUILDING
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for CA Certificates 3.6.0
+[INFO]     [creator]       https://github.com/paketo-buildpacks/ca-certificates
+[INFO]     [creator]       Launch Helper: Contributing to layer
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_ca-certificates/helper/exec.d/ca-certificates-helper
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for BellSoft Liberica 10.0.0
+[INFO]     [creator]       https://github.com/paketo-buildpacks/bellsoft-liberica
+[INFO]     [creator]       Build Configuration:
+[INFO]     [creator]         $BP_JVM_JLINK_ARGS           --no-man-pages --no-header-files --strip-debug --compress=1  configure custom link arguments (--output must be omitted)
+[INFO]     [creator]         $BP_JVM_JLINK_ENABLED        false                                                        enables running jlink tool to generate custom JRE
+[INFO]     [creator]         $BP_JVM_TYPE                 JRE                                                          the JVM type - JDK or JRE
+[INFO]     [creator]         $BP_JVM_VERSION              17                                                           the Java version
+[INFO]     [creator]       Launch Configuration:
+[INFO]     [creator]         $BPL_DEBUG_ENABLED           false                                                        enables Java remote debugging support
+[INFO]     [creator]         $BPL_DEBUG_PORT              8000                                                         configure the remote debugging port
+[INFO]     [creator]         $BPL_DEBUG_SUSPEND           false                                                        configure whether to suspend execution until a debugger has attached
+[INFO]     [creator]         $BPL_HEAP_DUMP_PATH                                                                       write heap dumps on error to this path
+[INFO]     [creator]         $BPL_JAVA_NMT_ENABLED        true                                                         enables Java Native Memory Tracking (NMT)
+[INFO]     [creator]         $BPL_JAVA_NMT_LEVEL          summary                                                      configure level of NMT, summary or detail
+[INFO]     [creator]         $BPL_JFR_ARGS                                                                             configure custom Java Flight Recording (JFR) arguments
+[INFO]     [creator]         $BPL_JFR_ENABLED             false                                                        enables Java Flight Recording (JFR)
+[INFO]     [creator]         $BPL_JMX_ENABLED             false                                                        enables Java Management Extensions (JMX)
+[INFO]     [creator]         $BPL_JMX_PORT                5000                                                         configure the JMX port
+[INFO]     [creator]         $BPL_JVM_HEAD_ROOM           0                                                            the headroom in memory calculation
+[INFO]     [creator]         $BPL_JVM_LOADED_CLASS_COUNT  35% of classes                                               the number of loaded classes in memory calculation
+[INFO]     [creator]         $BPL_JVM_THREAD_COUNT        250                                                          the number of threads in memory calculation
+[INFO]     [creator]         $JAVA_TOOL_OPTIONS                                                                        the JVM launch flags
+[INFO]     [creator]         Using Java version 17 extracted from MANIFEST.MF
+[INFO]     [creator]       BellSoft Liberica JRE 17.0.6: Contributing to layer
+[INFO]     [creator]         Downloading from https://github.com/bell-sw/Liberica/releases/download/17.0.6+10/bellsoft-jre17.0.6+10-linux-amd64.tar.gz
+[INFO]     [creator]         Verifying checksum
+[INFO]     [creator]         Expanding to /layers/paketo-buildpacks_bellsoft-liberica/jre
+[INFO]     [creator]         Adding 124 container CA certificates to JVM truststore
+[INFO]     [creator]         Writing env.launch/BPI_APPLICATION_PATH.default
+[INFO]     [creator]         Writing env.launch/BPI_JVM_CACERTS.default
+[INFO]     [creator]         Writing env.launch/BPI_JVM_CLASS_COUNT.default
+[INFO]     [creator]         Writing env.launch/BPI_JVM_SECURITY_PROVIDERS.default
+[INFO]     [creator]         Writing env.launch/JAVA_HOME.default
+[INFO]     [creator]         Writing env.launch/JAVA_TOOL_OPTIONS.append
+[INFO]     [creator]         Writing env.launch/JAVA_TOOL_OPTIONS.delim
+[INFO]     [creator]         Writing env.launch/MALLOC_ARENA_MAX.default
+[INFO]     [creator]       Launch Helper: Contributing to layer
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/active-processor-count
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/java-opts
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/jvm-heap
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/link-local-dns
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/memory-calculator
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/security-providers-configurer
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/jmx
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/jfr
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/security-providers-classpath-9
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/debug-9
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/nmt
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/openssl-certificate-loader
+[INFO]     [creator]       Java Security Properties: Contributing to layer
+[INFO]     [creator]         Writing env.launch/JAVA_SECURITY_PROPERTIES.default
+[INFO]     [creator]         Writing env.launch/JAVA_TOOL_OPTIONS.append
+[INFO]     [creator]         Writing env.launch/JAVA_TOOL_OPTIONS.delim
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for Syft 1.26.0
+[INFO]     [creator]       https://github.com/paketo-buildpacks/syft
+[INFO]     [creator]         Downloading from https://github.com/anchore/syft/releases/download/v0.75.0/syft_0.75.0_linux_amd64.tar.gz
+[INFO]     [creator]         Verifying checksum
+[INFO]     [creator]         Writing env.build/SYFT_CHECK_FOR_APP_UPDATE.default
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for Executable JAR 6.6.2
+[INFO]     [creator]       https://github.com/paketo-buildpacks/executable-jar
+[INFO]     [creator]       Class Path: Contributing to layer
+[INFO]     [creator]         Writing env/CLASSPATH.delim
+[INFO]     [creator]         Writing env/CLASSPATH.prepend
+[INFO]     [creator]       Process types:
+[INFO]     [creator]         executable-jar: java org.springframework.boot.loader.JarLauncher (direct)
+[INFO]     [creator]         task:           java org.springframework.boot.loader.JarLauncher (direct)
+[INFO]     [creator]         web:            java org.springframework.boot.loader.JarLauncher (direct)
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for Spring Boot 5.23.0
+[INFO]     [creator]       https://github.com/paketo-buildpacks/spring-boot
+[INFO]     [creator]       Build Configuration:
+[INFO]     [creator]         $BP_SPRING_CLOUD_BINDINGS_DISABLED   false  whether to contribute Spring Boot cloud bindings support
+[INFO]     [creator]       Launch Configuration:
+[INFO]     [creator]         $BPL_SPRING_CLOUD_BINDINGS_DISABLED  false  whether to auto-configure Spring Boot environment properties from bindings
+[INFO]     [creator]         $BPL_SPRING_CLOUD_BINDINGS_ENABLED   true   Deprecated - whether to auto-configure Spring Boot environment properties from bindings
+[INFO]     [creator]       Creating slices from layers index
+[INFO]     [creator]         dependencies (17.6 MB)
+[INFO]     [creator]         spring-boot-loader (269.4 KB)
+[INFO]     [creator]         snapshot-dependencies (0.0 B)
+[INFO]     [creator]         application (36.9 KB)
+[INFO]     [creator]       Launch Helper: Contributing to layer
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_spring-boot/helper/exec.d/spring-cloud-bindings
+[INFO]     [creator]       Spring Cloud Bindings 1.11.0: Contributing to layer
+[INFO]     [creator]         Downloading from https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-bindings/1.11.0/spring-cloud-bindings-1.11.0.jar
+[INFO]     [creator]         Verifying checksum
+[INFO]     [creator]         Copying to /layers/paketo-buildpacks_spring-boot/spring-cloud-bindings
+[INFO]     [creator]       Web Application Type: Contributing to layer
+[INFO]     [creator]         Non-web application detected
+[INFO]     [creator]         Writing env.launch/BPL_JVM_THREAD_COUNT.default
+[INFO]     [creator]       4 application slices
+[INFO]     [creator]       Image labels:
+[INFO]     [creator]         org.opencontainers.image.title
+[INFO]     [creator]         org.opencontainers.image.version
+[INFO]     [creator]         org.springframework.boot.version
+[INFO]     [creator]     ===> EXPORTING
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/ca-certificates:helper'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/bellsoft-liberica:helper'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/bellsoft-liberica:java-security-properties'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/bellsoft-liberica:jre'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/executable-jar:classpath'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/spring-boot:helper'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/spring-boot:spring-cloud-bindings'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/spring-boot:web-application-type'
+[INFO]     [creator]     Adding layer 'buildpacksio/lifecycle:launch.sbom'
+[INFO]     [creator]     Adding 5/5 app layer(s)
+[INFO]     [creator]     Adding layer 'buildpacksio/lifecycle:launcher'
+[INFO]     [creator]     Adding layer 'buildpacksio/lifecycle:config'
+[INFO]     [creator]     Adding layer 'buildpacksio/lifecycle:process-types'
+[INFO]     [creator]     Adding label 'io.buildpacks.lifecycle.metadata'
+[INFO]     [creator]     Adding label 'io.buildpacks.build.metadata'
+[INFO]     [creator]     Adding label 'io.buildpacks.project.metadata'
+[INFO]     [creator]     Adding label 'org.opencontainers.image.title'
+[INFO]     [creator]     Adding label 'org.opencontainers.image.version'
+[INFO]     [creator]     Adding label 'org.springframework.boot.version'
+[INFO]     [creator]     Setting default process type 'web'
+[INFO]     [creator]     Saving docker.io/library/catalog-service:0.0.1-SNAPSHOT...
+[INFO]     [creator]     *** Images (15b31429e5c7):
+[INFO]     [creator]           docker.io/library/catalog-service:0.0.1-SNAPSHOT
+[INFO]     [creator]     Adding cache layer 'paketo-buildpacks/syft:syft'
+[INFO]     [creator]     Adding cache layer 'buildpacksio/lifecycle:cache.sbom'
+[INFO]
+[INFO] Successfully built image 'docker.io/library/catalog-service:0.0.1-SNAPSHOT'
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:47 min
+[INFO] Finished at: 2023-04-08T22:34:10+02:00
+[INFO] ------------------------------------------------------------------------
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ docker image ls
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+paketobuildpacks/run              base-cnb         401511bdd9f6   11 days ago     87MB
+kindest/node                      <none>           d8644f660df0   5 months ago    898MB
+confluentinc/ksqldb-examples      7.2.1            ae252c2780c4   8 months ago    815MB
+confluentinc/cp-ksqldb-server     7.2.1            140d2ac32177   8 months ago    1.36GB
+confluentinc/cp-ksqldb-cli        7.2.1            287039530a46   8 months ago    857MB
+confluentinc/cp-schema-registry   7.2.1            afaac043dcc1   8 months ago    1.86GB
+confluentinc/cp-kafka             7.2.1            d893473a6510   8 months ago    782MB
+confluentinc/cp-kafka             latest           d893473a6510   8 months ago    782MB
+confluentinc/cp-zookeeper         7.2.1            3f28db6a433d   8 months ago    782MB
+confluentinc/cp-zookeeper         latest           3f28db6a433d   8 months ago    782MB
+confluentinc/cp-kafka-rest        7.2.1            784b8061ad0c   8 months ago    1.76GB
+cnfldemos/kafka-connect-datagen   0.5.3-7.1.0      de0e2396b904   12 months ago   1.46GB
+zookeeper                         3.6.2            a72350516291   23 months ago   268MB
+bsucaciu/kafka                    2.6.0            cbe9ab39d5fc   2 years ago     642MB
+bsucaciu/kerberos-producer        1.0.0            eb27c056cc20   2 years ago     354MB
+bsucaciu/kerberos-consumer        1.0.0            5486c13e058b   2 years ago     354MB
+bsucaciu/kerberos                 krb5             ce76df4cb4a8   2 years ago     61MB
+paketobuildpacks/builder          base             ae737b9d787f   43 years ago    1.16GB
+catalog-service                   0.0.1-SNAPSHOT   15b31429e5c7   43 years ago    274MB
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$  docker run --rm --name catalog-service -p 8080:8080 \
+catalog-service:0.0.1-SNAPSHOT
+Setting Active Processor Count to 16
+Calculating JVM memory based on 25490096K available memory
+For more information on this calculation, see https://paketo.io/docs/reference/java-reference/#memory-calculator
+Calculated JVM Memory Configuration: -XX:MaxDirectMemorySize=10M -Xmx25107757K -XX:MaxMetaspaceSize=75138K -XX:ReservedCodeCacheSize=240M -Xss1M (Total Memory: 25490096K, Thread Count: 50, Loaded Class Count: 10852, Headroom: 0%)
+Enabling Java Native Memory Tracking
+Adding 124 container CA certificates to JVM truststore
+Spring Cloud Bindings Enabled
+Picked up JAVA_TOOL_OPTIONS: -Djava.security.properties=/layers/paketo-buildpacks_bellsoft-liberica/java-security-properties/java-security.properties -XX:+ExitOnOutOfMemoryError -XX:ActiveProcessorCount=16 -XX:MaxDirectMemorySize=10M -Xmx25107757K -XX:MaxMetaspaceSize=75138K -XX:ReservedCodeCacheSize=240M -Xss1M -XX:+UnlockDiagnosticVMOptions -XX:NativeMemoryTracking=summary -XX:+PrintNMTStatistics -Dorg.springframework.cloud.bindings.boot.enable=true
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-04-08T20:42:09.587Z  INFO 1 --- [           main] c.p.c.CatalogServiceApplication          : Starting CatalogServiceApplication v0.0.1-SNAPSHOT using Java 17.0.6 with PID 1 (/workspace/BOOT-INF/classes started by cnb in /workspace)
+2023-04-08T20:42:09.591Z  INFO 1 --- [           main] c.p.c.CatalogServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2023-04-08T20:42:10.122Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-08T20:42:10.127Z  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-08T20:42:10.128Z  INFO 1 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-04-08T20:42:10.175Z  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-08T20:42:10.176Z  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 536 ms
+2023-04-08T20:42:10.347Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-08T20:42:10.355Z  INFO 1 --- [           main] c.p.c.CatalogServiceApplication          : Started CatalogServiceApplication in 0.953 seconds (process running for 1.146)
+2023-04-08T20:42:26.646Z  INFO 1 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-08T20:42:26.646Z  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-08T20:42:26.647Z  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+^C
+Native Memory Tracking:
+
+Total: reserved=27147583925, committed=379646389
+       malloc: 46338485 #191350
+       mmap:   reserved=27101245440, committed=333307904
+
+-                 Java Heap (reserved=25719472128, committed=234881024)
+                            (mmap: reserved=25719472128, committed=234881024)
+
+-                     Class (reserved=63615316, committed=4632916)
+                            (classes #7045)
+                            (  instance classes #6522, array classes #523)
+                            (malloc=700756 #15202)
+                            (mmap: reserved=62914560, committed=3932160)
+                            (  Metadata:   )
+                            (    reserved=33554432, committed=25559040)
+                            (    used=25295632)
+                            (    waste=263408 =1.03%)
+                            (  Class space:)
+                            (    reserved=62914560, committed=3932160)
+                            (    used=3700168)
+                            (    waste=231992 =5.90%)
+
+-                    Thread (reserved=30541672, committed=1247080)
+                            (thread #29)
+                            (stack: reserved=30457856, committed=1163264)
+                            (malloc=46184 #202)
+                            (arena=37632 #64)
+
+-                      Code (reserved=254447496, committed=14692232)
+                            (malloc=819080 #4647)
+                            (mmap: reserved=253628416, committed=13873152)
+
+-                        GC (reserved=1017902904, committed=72185656)
+                            (malloc=29312824 #2717)
+                            (mmap: reserved=988590080, committed=42872832)
+
+-                  Compiler (reserved=4575736, committed=4575736)
+                            (malloc=17504 #356)
+                            (arena=4558232 #10)
+
+-                  Internal (reserved=317983, committed=317983)
+                            (malloc=281119 #5298)
+                            (mmap: reserved=36864, committed=36864)
+
+-                    Symbol (reserved=6917328, committed=6917328)
+                            (malloc=6385048 #160962)
+                            (arena=532280 #1)
+
+-    Native Memory Tracking (reserved=3068648, committed=3068648)
+                            (malloc=7032 #97)
+                            (tracking overhead=3061616)
+
+-        Shared class space (reserved=12582912, committed=10981376)
+                            (mmap: reserved=12582912, committed=10981376)
+
+-               Arena Chunk (reserved=294760, committed=294760)
+                            (malloc=294760)
+
+-                   Tracing (reserved=345, committed=345)
+                            (malloc=345 #9)
+
+-                 Arguments (reserved=169, committed=169)
+                            (malloc=169 #5)
+
+-                    Module (reserved=64432, committed=64432)
+                            (malloc=64432 #701)
+
+-                 Safepoint (reserved=8192, committed=8192)
+                            (mmap: reserved=8192, committed=8192)
+
+-           Synchronization (reserved=64784, committed=64784)
+                            (malloc=64784 #751)
+
+-            Serviceability (reserved=672, committed=672)
+                            (malloc=672 #6)
+
+-                 Metaspace (reserved=33699216, committed=25703824)
+                            (malloc=144784 #97)
+                            (mmap: reserved=33554432, committed=25559040)
+
+-      String Deduplication (reserved=704, committed=704)
+                            (malloc=704 #8)
+
+-           Object Monitors (reserved=8528, committed=8528)
+                            (malloc=8528 #41)
+
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ docker compose up -d
+[+] Running 2/2
+ ✔ Network catalog-service_default  Created                                                                                                                                                                                        0.0s
+ ✔ Container catalog-service        Started                                                                                                                                                                                        0.4s
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ docker compose down
+[+] Running 2/2
+ ✔ Container catalog-service        Removed                                                                                                                                                                                        0.4s
+ ✔ Network catalog-service_default  Removed                                                                                                                                                                                        0.4s
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ ./mvnw spring-boot:build-image
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------------< com.polarbookshop:catalog-service >------------------
+[INFO] Building catalog-service 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] >>> spring-boot-maven-plugin:3.0.5:build-image (default-cli) > package @ catalog-service >>>
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.0:resources (default-resources) @ catalog-service ---
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO]
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ catalog-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.0:testResources (default-testResources) @ catalog-service ---
+[INFO] skip non existing resourceDirectory /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service/src/test/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ catalog-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ catalog-service ---
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.polarbookshop.catalogservice.CatalogServiceApplicationTests
+23:35:31.893 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Neither @ContextConfiguration nor @ContextHierarchy found for test class [CatalogServiceApplicationTests]: using SpringBootContextLoader
+23:35:31.894 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader -- Could not detect default resource locations for test class [com.polarbookshop.catalogservice.CatalogServiceApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+23:35:31.895 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.polarbookshop.catalogservice.CatalogServiceApplicationTests]: CatalogServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:35:31.904 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using ContextCustomizers for test class [CatalogServiceApplicationTests]: [ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer]
+23:35:31.938 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider -- Identified candidate component class: file [/home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service/target/classes/com/polarbookshop/catalogservice/CatalogServiceApplication.class]
+23:35:31.944 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.polarbookshop.catalogservice.CatalogServiceApplication for test class com.polarbookshop.catalogservice.CatalogServiceApplicationTests
+23:35:31.984 [main] DEBUG org.springframework.test.context.util.TestContextSpringFactoriesUtils -- Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom TestExecutionListener classes or make the default TestExecutionListener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+23:35:31.985 [main] DEBUG org.springframework.test.context.util.TestContextSpringFactoriesUtils -- Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom TestExecutionListener classes or make the default TestExecutionListener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+23:35:31.986 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using TestExecutionListeners for test class [CatalogServiceApplicationTests]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, EventPublishingTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
+23:35:31.986 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener -- Before test class: class [CatalogServiceApplicationTests], class annotated with @DirtiesContext [false] with mode [null]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-04-08T23:35:32.123+02:00  INFO 34171 --- [           main] c.p.c.CatalogServiceApplicationTests     : Starting CatalogServiceApplicationTests using Java 17.0.6 with PID 34171 (started by willem in /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service)
+2023-04-08T23:35:32.124+02:00  INFO 34171 --- [           main] c.p.c.CatalogServiceApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-04-08T23:35:32.681+02:00  INFO 34171 --- [           main] c.p.c.CatalogServiceApplicationTests     : Started CatalogServiceApplicationTests in 0.676 seconds (process running for 1.085)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.08 s - in com.polarbookshop.catalogservice.CatalogServiceApplicationTests
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- maven-jar-plugin:3.3.0:jar (default-jar) @ catalog-service ---
+[INFO] Building jar: /home/willem/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service/target/catalog-service-0.0.1-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:3.0.5:repackage (repackage) @ catalog-service ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO]
+[INFO] <<< spring-boot-maven-plugin:3.0.5:build-image (default-cli) < package @ catalog-service <<<
+[INFO]
+[INFO]
+[INFO] --- spring-boot-maven-plugin:3.0.5:build-image (default-cli) @ catalog-service ---
+[INFO] Building image 'docker.io/library/catalog-service:0.0.1-SNAPSHOT'
+[INFO]
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 100%
+[INFO]  > Pulled builder image 'paketobuildpacks/builder@sha256:55ef90e62bf96a81f77eba0fc906d19802a8647e343240c77621b3a4a77d5a83'
+[INFO]  > Pulling run image 'docker.io/paketobuildpacks/run:base-cnb' 100%
+[INFO]  > Pulled run image 'paketobuildpacks/run@sha256:b93a81a444084ff12acbbfbff6f1ad645125972d0f28613d7bedf1761327973b'
+[INFO]  > Executing lifecycle version v0.16.1
+[INFO]  > Using build cache volume 'pack-cache-0835c272a0bf.build'
+[INFO]
+[INFO]  > Running creator
+[INFO]     [creator]     ===> ANALYZING
+[INFO]     [creator]     Restoring data for SBOM from previous image
+[INFO]     [creator]     ===> DETECTING
+[INFO]     [creator]     6 of 26 buildpacks participating
+[INFO]     [creator]     paketo-buildpacks/ca-certificates   3.6.0
+[INFO]     [creator]     paketo-buildpacks/bellsoft-liberica 10.0.0
+[INFO]     [creator]     paketo-buildpacks/syft              1.26.0
+[INFO]     [creator]     paketo-buildpacks/executable-jar    6.6.2
+[INFO]     [creator]     paketo-buildpacks/dist-zip          5.5.2
+[INFO]     [creator]     paketo-buildpacks/spring-boot       5.23.0
+[INFO]     [creator]     ===> RESTORING
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/ca-certificates:helper" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/bellsoft-liberica:helper" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/bellsoft-liberica:java-security-properties" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/bellsoft-liberica:jre" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/syft:syft" from cache
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/spring-boot:helper" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/spring-boot:spring-cloud-bindings" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/spring-boot:web-application-type" from app image
+[INFO]     [creator]     Restoring data for "paketo-buildpacks/syft:syft" from cache
+[INFO]     [creator]     Restoring data for SBOM from cache
+[INFO]     [creator]     ===> BUILDING
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for CA Certificates 3.6.0
+[INFO]     [creator]       https://github.com/paketo-buildpacks/ca-certificates
+[INFO]     [creator]       Launch Helper: Reusing cached layer
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for BellSoft Liberica 10.0.0
+[INFO]     [creator]       https://github.com/paketo-buildpacks/bellsoft-liberica
+[INFO]     [creator]       Build Configuration:
+[INFO]     [creator]         $BP_JVM_JLINK_ARGS           --no-man-pages --no-header-files --strip-debug --compress=1  configure custom link arguments (--output must be omitted)
+[INFO]     [creator]         $BP_JVM_JLINK_ENABLED        false                                                        enables running jlink tool to generate custom JRE
+[INFO]     [creator]         $BP_JVM_TYPE                 JRE                                                          the JVM type - JDK or JRE
+[INFO]     [creator]         $BP_JVM_VERSION              17                                                           the Java version
+[INFO]     [creator]       Launch Configuration:
+[INFO]     [creator]         $BPL_DEBUG_ENABLED           false                                                        enables Java remote debugging support
+[INFO]     [creator]         $BPL_DEBUG_PORT              8000                                                         configure the remote debugging port
+[INFO]     [creator]         $BPL_DEBUG_SUSPEND           false                                                        configure whether to suspend execution until a debugger has attached
+[INFO]     [creator]         $BPL_HEAP_DUMP_PATH                                                                       write heap dumps on error to this path
+[INFO]     [creator]         $BPL_JAVA_NMT_ENABLED        true                                                         enables Java Native Memory Tracking (NMT)
+[INFO]     [creator]         $BPL_JAVA_NMT_LEVEL          summary                                                      configure level of NMT, summary or detail
+[INFO]     [creator]         $BPL_JFR_ARGS                                                                             configure custom Java Flight Recording (JFR) arguments
+[INFO]     [creator]         $BPL_JFR_ENABLED             false                                                        enables Java Flight Recording (JFR)
+[INFO]     [creator]         $BPL_JMX_ENABLED             false                                                        enables Java Management Extensions (JMX)
+[INFO]     [creator]         $BPL_JMX_PORT                5000                                                         configure the JMX port
+[INFO]     [creator]         $BPL_JVM_HEAD_ROOM           0                                                            the headroom in memory calculation
+[INFO]     [creator]         $BPL_JVM_LOADED_CLASS_COUNT  35% of classes                                               the number of loaded classes in memory calculation
+[INFO]     [creator]         $BPL_JVM_THREAD_COUNT        250                                                          the number of threads in memory calculation
+[INFO]     [creator]         $JAVA_TOOL_OPTIONS                                                                        the JVM launch flags
+[INFO]     [creator]         Using Java version 17 extracted from MANIFEST.MF
+[INFO]     [creator]       BellSoft Liberica JRE 17.0.6: Contributing to layer
+[INFO]     [creator]         Downloading from https://github.com/bell-sw/Liberica/releases/download/17.0.6+10/bellsoft-jre17.0.6+10-linux-amd64.tar.gz
+[INFO]     [creator]         Verifying checksum
+[INFO]     [creator]         Expanding to /layers/paketo-buildpacks_bellsoft-liberica/jre
+[INFO]     [creator]         Adding 124 container CA certificates to JVM truststore
+[INFO]     [creator]         Writing env.launch/BPI_APPLICATION_PATH.default
+[INFO]     [creator]         Writing env.launch/BPI_JVM_CACERTS.default
+[INFO]     [creator]         Writing env.launch/BPI_JVM_CLASS_COUNT.default
+[INFO]     [creator]         Writing env.launch/BPI_JVM_SECURITY_PROVIDERS.default
+[INFO]     [creator]         Writing env.launch/JAVA_HOME.default
+[INFO]     [creator]         Writing env.launch/JAVA_TOOL_OPTIONS.append
+[INFO]     [creator]         Writing env.launch/JAVA_TOOL_OPTIONS.delim
+[INFO]     [creator]         Writing env.launch/MALLOC_ARENA_MAX.default
+[INFO]     [creator]       Launch Helper: Reusing cached layer
+[INFO]     [creator]       Java Security Properties: Reusing cached layer
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for Syft 1.26.0
+[INFO]     [creator]       https://github.com/paketo-buildpacks/syft
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for Executable JAR 6.6.2
+[INFO]     [creator]       https://github.com/paketo-buildpacks/executable-jar
+[INFO]     [creator]       Class Path: Contributing to layer
+[INFO]     [creator]         Writing env/CLASSPATH.delim
+[INFO]     [creator]         Writing env/CLASSPATH.prepend
+[INFO]     [creator]       Process types:
+[INFO]     [creator]         executable-jar: java org.springframework.boot.loader.JarLauncher (direct)
+[INFO]     [creator]         task:           java org.springframework.boot.loader.JarLauncher (direct)
+[INFO]     [creator]         web:            java org.springframework.boot.loader.JarLauncher (direct)
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for Spring Boot 5.23.0
+[INFO]     [creator]       https://github.com/paketo-buildpacks/spring-boot
+[INFO]     [creator]       Build Configuration:
+[INFO]     [creator]         $BP_SPRING_CLOUD_BINDINGS_DISABLED   false  whether to contribute Spring Boot cloud bindings support
+[INFO]     [creator]       Launch Configuration:
+[INFO]     [creator]         $BPL_SPRING_CLOUD_BINDINGS_DISABLED  false  whether to auto-configure Spring Boot environment properties from bindings
+[INFO]     [creator]         $BPL_SPRING_CLOUD_BINDINGS_ENABLED   true   Deprecated - whether to auto-configure Spring Boot environment properties from bindings
+[INFO]     [creator]       Creating slices from layers index
+[INFO]     [creator]         dependencies (17.6 MB)
+[INFO]     [creator]         spring-boot-loader (269.4 KB)
+[INFO]     [creator]         snapshot-dependencies (0.0 B)
+[INFO]     [creator]         application (37.2 KB)
+[INFO]     [creator]       Launch Helper: Reusing cached layer
+[INFO]     [creator]       Spring Cloud Bindings 1.11.0: Reusing cached layer
+[INFO]     [creator]       Web Application Type: Contributing to layer
+[INFO]     [creator]         Non-web application detected
+[INFO]     [creator]         Writing env.launch/BPL_JVM_THREAD_COUNT.default
+[INFO]     [creator]       4 application slices
+[INFO]     [creator]       Image labels:
+[INFO]     [creator]         org.opencontainers.image.title
+[INFO]     [creator]         org.opencontainers.image.version
+[INFO]     [creator]         org.springframework.boot.version
+[INFO]     [creator]     ===> EXPORTING
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/ca-certificates:helper'
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/bellsoft-liberica:helper'
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/bellsoft-liberica:java-security-properties'
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/bellsoft-liberica:jre'
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/executable-jar:classpath'
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/spring-boot:helper'
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/spring-boot:spring-cloud-bindings'
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/spring-boot:web-application-type'
+[INFO]     [creator]     Reusing layer 'buildpacksio/lifecycle:launch.sbom'
+[INFO]     [creator]     Reusing 4/5 app layer(s)
+[INFO]     [creator]     Adding 1/5 app layer(s)
+[INFO]     [creator]     Reusing layer 'buildpacksio/lifecycle:launcher'
+[INFO]     [creator]     Reusing layer 'buildpacksio/lifecycle:config'
+[INFO]     [creator]     Reusing layer 'buildpacksio/lifecycle:process-types'
+[INFO]     [creator]     Adding label 'io.buildpacks.lifecycle.metadata'
+[INFO]     [creator]     Adding label 'io.buildpacks.build.metadata'
+[INFO]     [creator]     Adding label 'io.buildpacks.project.metadata'
+[INFO]     [creator]     Adding label 'org.opencontainers.image.title'
+[INFO]     [creator]     Adding label 'org.opencontainers.image.version'
+[INFO]     [creator]     Adding label 'org.springframework.boot.version'
+[INFO]     [creator]     Setting default process type 'web'
+[INFO]     [creator]     Saving docker.io/library/catalog-service:0.0.1-SNAPSHOT...
+[INFO]     [creator]     *** Images (7e4fbbd3e0ec):
+[INFO]     [creator]           docker.io/library/catalog-service:0.0.1-SNAPSHOT
+[INFO]     [creator]     Reusing cache layer 'paketo-buildpacks/syft:syft'
+[INFO]     [creator]     Reusing cache layer 'buildpacksio/lifecycle:cache.sbom'
+[INFO]
+[INFO] Successfully built image 'docker.io/library/catalog-service:0.0.1-SNAPSHOT'
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.425 s
+[INFO] Finished at: 2023-04-08T23:35:43+02:00
+[INFO] ------------------------------------------------------------------------
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ docker image ls
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+paketobuildpacks/run              base-cnb         401511bdd9f6   11 days ago     87MB
+kindest/node                      <none>           d8644f660df0   5 months ago    898MB
+confluentinc/ksqldb-examples      7.2.1            ae252c2780c4   8 months ago    815MB
+confluentinc/cp-ksqldb-server     7.2.1            140d2ac32177   8 months ago    1.36GB
+confluentinc/cp-ksqldb-cli        7.2.1            287039530a46   8 months ago    857MB
+confluentinc/cp-schema-registry   7.2.1            afaac043dcc1   8 months ago    1.86GB
+confluentinc/cp-kafka             7.2.1            d893473a6510   8 months ago    782MB
+confluentinc/cp-kafka             latest           d893473a6510   8 months ago    782MB
+confluentinc/cp-zookeeper         7.2.1            3f28db6a433d   8 months ago    782MB
+confluentinc/cp-zookeeper         latest           3f28db6a433d   8 months ago    782MB
+confluentinc/cp-kafka-rest        7.2.1            784b8061ad0c   8 months ago    1.76GB
+cnfldemos/kafka-connect-datagen   0.5.3-7.1.0      de0e2396b904   12 months ago   1.46GB
+zookeeper                         3.6.2            a72350516291   23 months ago   268MB
+bsucaciu/kafka                    2.6.0            cbe9ab39d5fc   2 years ago     642MB
+bsucaciu/kerberos-producer        1.0.0            eb27c056cc20   2 years ago     354MB
+bsucaciu/kerberos-consumer        1.0.0            5486c13e058b   2 years ago     354MB
+bsucaciu/kerberos                 krb5             ce76df4cb4a8   2 years ago     61MB
+<none>                            <none>           b76b40cf47d2   43 years ago    274MB
+<none>                            <none>           15b31429e5c7   43 years ago    274MB
+<none>                            <none>           c511d0e743dd   43 years ago    274MB
+catalog-service                   0.0.1-SNAPSHOT   7e4fbbd3e0ec   43 years ago    274MB
+paketobuildpacks/builder          base             ae737b9d787f   43 years ago    1.16GB
+<none>                            <none>           7a7af8381d2f   43 years ago    274MB
+<none>                            <none>           d074c5fb1d11   43 years ago    274MB
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ docker compose up -d
+[+] Running 2/2
+ ✔ Network catalog-service_default  Created                                                                                                                                                                                        0.1s
+ ✔ Container catalog-service        Started                                                                                                                                                                                        0.4s
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ docker image prune
+WARNING! This will remove all dangling images.
+Are you sure you want to continue? [y/N] y
+Deleted Images:
+deleted: sha256:15b31429e5c7bcb8189d4ab384da6167f9bb858b1e5386631f05789a4ee1e643
+deleted: sha256:544cd313bcb3c62ed50c24b125f4b37d87e35a15d8117df5c306dbb5f4b11e91
+deleted: sha256:9bbcd54b488ec17acbbab6a47735257c2b23e967ca6223af00f1557aff9b4809
+deleted: sha256:8b33e4c73350d17b340d0a858b76a77d1fc4e96e3a52ed853e6acfba5056ce1b
+deleted: sha256:e8cfa87d6268b3f338a793019f5166b45593fe03ae07e75a72fdd44c490dd51e
+deleted: sha256:980fc41c54e46db06975d693cddba913c3bf3307caa6af36885764ad6e5b1b6f
+deleted: sha256:c511d0e743ddd9230df0a4667ea8350a9bd2030ced75cf149fffe79ec655e180
+deleted: sha256:ea41f54eb703755f4b0064caf77b0291311566cdbbf0059f4e319c145e43aeea
+deleted: sha256:6403206da3788d37f18bcc7c92800b0ad2453848587ab8abeb9126f963979808
+deleted: sha256:dadfa3c19dd9ace1bbcf65620c2784c573cfed28ddd1d0eb1f1a7bd35cebe2b0
+deleted: sha256:e635e8e2e0db5477a7781fe1af05c7f492d791819611daf7f4477f653112057d
+deleted: sha256:c3f76a027005e65b0c778265658be3bacc3b76a7f3ebfa93e4943f5588ed30da
+deleted: sha256:d074c5fb1d110a0f2fd818a7788da337e53a9b2ecc89c23068d1429a36690898
+deleted: sha256:2f440fc997bd40fd8e34ac8a33a2cc987ba6da6b4b1e19e2b138e95ddbf6e5ac
+deleted: sha256:af9349c5921f6bed99458cd44fe8bee583192f53531a9973d4934cec9e6ed699
+deleted: sha256:9c22789fa39b5778c0e0b750266eebf2a50e9d3aa8d2c51d060bedb78bc9bef4
+deleted: sha256:16c1d91daa587f2aed2622faf433578e174da573b1d292cf72a1c3d1cd6aa05c
+deleted: sha256:81fe22e95bb0a29d993f7d2136bac3ff691a7eb2c7a9f26020be9f0053ffde7a
+deleted: sha256:7a7af8381d2ff32af188688563666769044368c6ab3490dc598e62ad761f7356
+deleted: sha256:4b40d28f192f38374f0d7743471b2d5a64fb0818f3412c38ab991905176fca7b
+deleted: sha256:8dbcc96c3bde0ea16178a5a1262a294fe664a57b6f89b45d9374c105fe175b41
+deleted: sha256:d098d0292f2d0bb91b1a2caaffb3eac05edc0ad2cb4e18eb9e0dd395ed38e6c7
+deleted: sha256:7768887b0ef2ed800b6bbddae1fb656c540911c32db4bb069877bbc037cfa535
+deleted: sha256:0bc4595ad7c8da13882d95f28ea16a4461632fbdc362566904ac94f109739390
+deleted: sha256:b76b40cf47d2e5a868bc10981bccdf3b498abc7c3de00afdcf51f51dd23c8bb8
+deleted: sha256:17f99e44c6669212a8a4e5daccd2cea46ea60b941a4a26d1d2cb59e455325f60
+deleted: sha256:8aabca0182a97a5f13bb0d743dfaea61afc0d89e0980e1b819a074717c3c6dad
+deleted: sha256:364a4c4248a95c033f5322f2d545fbf6a8ec183292e192d7b09fd54fdb5c86b6
+deleted: sha256:888917a4511700db755d6067c40ab3cac2ae20abd5f28dbdcfb9b5f56d89764c
+deleted: sha256:edf117de0af6b3abf64b9d67f7a35b828b9d1adc7d2b042e498dc1820a6aec73
+
+Total reclaimed space: 11.57MB
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ docker image ls
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+paketobuildpacks/run              base-cnb         401511bdd9f6   11 days ago     87MB
+kindest/node                      <none>           d8644f660df0   5 months ago    898MB
+confluentinc/ksqldb-examples      7.2.1            ae252c2780c4   8 months ago    815MB
+confluentinc/cp-ksqldb-server     7.2.1            140d2ac32177   8 months ago    1.36GB
+confluentinc/cp-ksqldb-cli        7.2.1            287039530a46   8 months ago    857MB
+confluentinc/cp-schema-registry   7.2.1            afaac043dcc1   8 months ago    1.86GB
+confluentinc/cp-kafka             7.2.1            d893473a6510   8 months ago    782MB
+confluentinc/cp-kafka             latest           d893473a6510   8 months ago    782MB
+confluentinc/cp-zookeeper         7.2.1            3f28db6a433d   8 months ago    782MB
+confluentinc/cp-zookeeper         latest           3f28db6a433d   8 months ago    782MB
+confluentinc/cp-kafka-rest        7.2.1            784b8061ad0c   8 months ago    1.76GB
+cnfldemos/kafka-connect-datagen   0.5.3-7.1.0      de0e2396b904   12 months ago   1.46GB
+zookeeper                         3.6.2            a72350516291   23 months ago   268MB
+bsucaciu/kafka                    2.6.0            cbe9ab39d5fc   2 years ago     642MB
+bsucaciu/kerberos-producer        1.0.0            eb27c056cc20   2 years ago     354MB
+bsucaciu/kerberos-consumer        1.0.0            5486c13e058b   2 years ago     354MB
+bsucaciu/kerberos                 krb5             ce76df4cb4a8   2 years ago     61MB
+paketobuildpacks/builder          base             ae737b9d787f   43 years ago    1.16GB
+catalog-service                   0.0.1-SNAPSHOT   7e4fbbd3e0ec   43 years ago    274MB
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$ docker compose down
+[+] Running 2/2
+ ✔ Container catalog-service        Removed                                                                                                                                                                                        0.4s
+ ✔ Network catalog-service_default  Removed                                                                                                                                                                                        0.4s
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter02/02-oo/catalog-service$
+
+

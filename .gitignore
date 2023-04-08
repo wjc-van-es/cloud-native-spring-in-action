@@ -58,6 +58,10 @@ Temporary Items
 # VS Code
 .vscode
 
+# maven build target dir
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
 # Gradle
 HELP.md
 .gradle
@@ -94,3 +98,5 @@ out/
 /nbdist/
 /.nb-gradle/
 
+# compiled go example
+/Chapter02/02-oo/hello

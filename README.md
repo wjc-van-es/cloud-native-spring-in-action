@@ -1,6 +1,6 @@
 # 🍃 Cloud Native Spring in Action
 
-<a href="https://www.manning.com/books/cloud-native-spring-in-action"><img src="/book-cover.jpeg" alt="The book cover of 'Cloud Native Spring in Action' by Thomas Vitale" align="left" height="200px" /></a>
+<a href="https://www.manning.com/books/cloud-native-spring-in-action"><img src="book-cover.jpeg" alt="The book cover of 'Cloud Native Spring in Action' by Thomas Vitale" align="left" height="200px" /></a>
 
 This repository contains the source code accompanying the book [Cloud Native Spring in Action - With Spring Boot and Kubernetes](https://www.manning.com/books/cloud-native-spring-in-action) written by [Thomas Vitale](https://www.thomasvitale.com/) and published by Manning Publications. It's currently available through the Manning Early Access Program (MEAP).
 
