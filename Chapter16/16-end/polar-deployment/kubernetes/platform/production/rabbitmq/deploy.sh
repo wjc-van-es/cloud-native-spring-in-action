@@ -6,7 +6,7 @@ echo "\n🐰 RabbitMQ deployment started."
 
 echo "\n📦 Installing RabbitMQ Cluster Kubernetes Operator..."
 
-kubectl apply -f "https://github.com/rabbitmq/cluster-operator/releases/download/v1.12.1/cluster-operator.yml"
+kubectl apply -f "https://github.com/rabbitmq/cluster-operator/releases/download/v1.14.0/cluster-operator.yml"
 
 echo "\n⌛ Waiting for RabbitMQ Operator to be deployed..."
 
@@ -53,7 +53,6 @@ export RABBITMQ_PASSWORD=$(kubectl get secret polar-rabbitmq-default-user -o jso
 
 echo "Username: $RABBITMQ_USERNAME"
 echo "Password: $RABBITMQ_PASSWORD"
-
 
 echo "\n🔑 Generating Secret with RabbitMQ credentials."
 
