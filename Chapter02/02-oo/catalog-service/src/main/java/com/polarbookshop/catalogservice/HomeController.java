@@ -8,9 +8,9 @@ public class HomeController {
 
     @GetMapping("/")
     public String getGreeting(){
-        return String.format("Greetings %s, welcome to the book catalog." +
-                        "\n Running with Java %s, %s of %s at %s.\n" +
-                        " OS/Arch/version: %s/%s/%s",
+        return String.format("<h1>Greetings %s,</h1><h2>welcome to the book catalog</h2>" +
+                        "<p>Running with Java %s, %s of %s at %s.</p>" +
+                        "<p>OS/Arch/version: %s/%s/%s</p>",
                 System.getProperty("user.name"),
                 System.getProperty("java.version"),
                 System.getProperty("java.vendor.version"),
