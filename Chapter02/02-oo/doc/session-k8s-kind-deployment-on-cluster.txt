@@ -1,0 +1,237 @@
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ docker images
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+paketobuildpacks/run              base-cnb         401511bdd9f6   13 days ago     87MB
+kindest/node                      <none>           d8644f660df0   5 months ago    898MB
+confluentinc/ksqldb-examples      7.2.1            ae252c2780c4   8 months ago    815MB
+confluentinc/cp-ksqldb-server     7.2.1            140d2ac32177   8 months ago    1.36GB
+confluentinc/cp-ksqldb-cli        7.2.1            287039530a46   8 months ago    857MB
+confluentinc/cp-schema-registry   7.2.1            afaac043dcc1   8 months ago    1.86GB
+confluentinc/cp-kafka             7.2.1            d893473a6510   8 months ago    782MB
+confluentinc/cp-kafka             latest           d893473a6510   8 months ago    782MB
+confluentinc/cp-zookeeper         7.2.1            3f28db6a433d   8 months ago    782MB
+confluentinc/cp-zookeeper         latest           3f28db6a433d   8 months ago    782MB
+confluentinc/cp-kafka-rest        7.2.1            784b8061ad0c   8 months ago    1.76GB
+cnfldemos/kafka-connect-datagen   0.5.3-7.1.0      de0e2396b904   12 months ago   1.46GB
+zookeeper                         3.6.2            a72350516291   23 months ago   268MB
+bsucaciu/kafka                    2.6.0            cbe9ab39d5fc   2 years ago     642MB
+bsucaciu/kerberos-producer        1.0.0            eb27c056cc20   2 years ago     354MB
+bsucaciu/kerberos-consumer        1.0.0            5486c13e058b   2 years ago     354MB
+bsucaciu/kerberos                 krb5             ce76df4cb4a8   2 years ago     61MB
+catalog-service                   0.0.1-SNAPSHOT   60795747b2e6   43 years ago    274MB
+paketobuildpacks/builder          base             d0c5f15ea098   43 years ago    1.15GB
+paketobuildpacks/builder          <none>           ae737b9d787f   43 years ago    1.16GB
+<none>                            <none>           95fa030bf990   43 years ago    274MB
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ docker image ls
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+paketobuildpacks/run              base-cnb         401511bdd9f6   13 days ago     87MB
+kindest/node                      <none>           d8644f660df0   5 months ago    898MB
+confluentinc/ksqldb-examples      7.2.1            ae252c2780c4   8 months ago    815MB
+confluentinc/cp-ksqldb-server     7.2.1            140d2ac32177   8 months ago    1.36GB
+confluentinc/cp-ksqldb-cli        7.2.1            287039530a46   8 months ago    857MB
+confluentinc/cp-schema-registry   7.2.1            afaac043dcc1   8 months ago    1.86GB
+confluentinc/cp-kafka             7.2.1            d893473a6510   8 months ago    782MB
+confluentinc/cp-kafka             latest           d893473a6510   8 months ago    782MB
+confluentinc/cp-zookeeper         7.2.1            3f28db6a433d   8 months ago    782MB
+confluentinc/cp-zookeeper         latest           3f28db6a433d   8 months ago    782MB
+confluentinc/cp-kafka-rest        7.2.1            784b8061ad0c   8 months ago    1.76GB
+cnfldemos/kafka-connect-datagen   0.5.3-7.1.0      de0e2396b904   12 months ago   1.46GB
+zookeeper                         3.6.2            a72350516291   23 months ago   268MB
+bsucaciu/kafka                    2.6.0            cbe9ab39d5fc   2 years ago     642MB
+bsucaciu/kerberos-producer        1.0.0            eb27c056cc20   2 years ago     354MB
+bsucaciu/kerberos-consumer        1.0.0            5486c13e058b   2 years ago     354MB
+bsucaciu/kerberos                 krb5             ce76df4cb4a8   2 years ago     61MB
+paketobuildpacks/builder          <none>           ae737b9d787f   43 years ago    1.16GB
+<none>                            <none>           95fa030bf990   43 years ago    274MB
+catalog-service                   0.0.1-SNAPSHOT   60795747b2e6   43 years ago    274MB
+paketobuildpacks/builder          base             d0c5f15ea098   43 years ago    1.15GB
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ docker image prune
+WARNING! This will remove all dangling images.
+Are you sure you want to continue? [y/N] y
+Deleted Images:
+deleted: sha256:95fa030bf99016dde2e8c38905aafb51a530ddfff60cbc4ec559ab464a842b5c
+deleted: sha256:bfcc74a62c19ff6c34ed4bc467647bb69a0b7587dbafa42643ae3445541a01aa
+deleted: sha256:005a1efc60d8c3846f415ccd61307d1d2d5a1d99e8a88f4dcc69dfa8c02177c8
+deleted: sha256:258ca0e997dae2a9123b85f14a061fbb7b9ce9af2626092493025ddd30beebe8
+deleted: sha256:ae2153e918917e7ec77050e4915f1a570c47cc887a66957ee70ef7d182317db1
+deleted: sha256:4ff1d73d57d99499278342e6858a44b5e578f0bc7eab087c6510d1201815907c
+untagged: kindest/node@sha256:f52781bc0d7a19fb6c405c2af83abfeb311f130707a0e219175677e366cc45d1
+deleted: sha256:d8644f660df0e5af6a7c882c98a253788da4b85aa33723136277c135fbe9188b
+deleted: sha256:62e8ad081d169a7617f31fafc6c5e0fc1944f5ce703d3e116e3f9c2905fa3276
+deleted: sha256:20ce6fa94f297a809c755dd996c6e031f1953f4e0851731eb4d92e3ee1109b0c
+untagged: paketobuildpacks/builder@sha256:55ef90e62bf96a81f77eba0fc906d19802a8647e343240c77621b3a4a77d5a83
+deleted: sha256:ae737b9d787fe9fd17a6fafb92a975550e8205e50acde06c4d0256237b55941a
+deleted: sha256:647144a021c5446520d8853a6fa96d9b4eacc21c54f02f39a9cd25caae4c92f7
+deleted: sha256:f09be10bd7083713c2b669530644fb60ba177142d44ce524153f35861fb8017d
+deleted: sha256:255ba60adad61de28cb486847028e743ab48d9d2cf6443f7bb05dbc12ae1561f
+deleted: sha256:345f195c1a1b70335ee235381235f37c57fe6a22bf56731ea8686b1e836572b6
+deleted: sha256:71ecff7ff383f9bac44a92c60f3f33ad42ab58f8695c6ad40bf07fb9af87e881
+deleted: sha256:0548fa76623e3824d5c65447ddcceb5ddf9a3f9bb36da7a31e3e7796fc31e1fc
+deleted: sha256:a2f035836cdd696556fdd2e44630fee4facfd3f2ec5be83fbeace74d062acbf9
+deleted: sha256:138886dc3191bd3ddd0ab84444e8b9324cc585e410f11be7c17893710900791d
+deleted: sha256:d3047afb87fc56a6eab907012b375a36e92bb306d19dec589f26d1c0f09e8ced
+deleted: sha256:146b22b57ac2e5e9187279847a246fce7a9b13c0cd42e4c9896ed5a974945d2a
+deleted: sha256:3e44a4560b55c4e8b982ba273dc18a58e112ec22c0a81dc88f8efa92b9a56484
+deleted: sha256:019b51474e9e6f3ebba120bde62d744d4ea2b2b51031a9c9f65b76d8f462a520
+deleted: sha256:270b1b7da2ba243db08b2aa07665a30dccd935c675938e7d0cc42b3852ed960e
+deleted: sha256:95953135ac529b4ab4ce5522006c32f410beae3012ef5e486b21b1cc7cb2ce2e
+deleted: sha256:f966394a29990a3f6cdb28adefadd83f7e97a571664b194519db8dd8b5044b90
+deleted: sha256:08f9600f80d33cec4007edf404fdb126ea54be833540ad7d5b4a24f49872936f
+deleted: sha256:e16bc5737fb3b96c6eeb0111838d6c27d6d21152238ce69f8cb1fb9acb7936a0
+deleted: sha256:faab93c3e4f33782d6af2bdb5f165787eda0cd64167793c044307fc0ad08097a
+deleted: sha256:be6508db7605e52aa9d4904f1af7f4501c08943d2ec78ea6dc438ead335a36a7
+deleted: sha256:c8c73a8f484d587312cb205cc75376e64adadb24f870b284186905c6885f9e0b
+deleted: sha256:9784bb397c4c09e50b152015f2470d3939cffb86b9b8db9b18536fdb7903c08f
+deleted: sha256:146aac1105bcbecee71db697b1f8a45f31473ae25fbb560dc48884c2000ad12f
+deleted: sha256:d2f83527ccf5d23ba03b993b3e249da4fbb85a05530305dc8a06e94564e490bb
+deleted: sha256:724b7e0d764da34bc1c800e6be849087023eeea35b52d637c5dc00c3ad86e6d2
+deleted: sha256:6bfab106e26e88db116fa46e5af82acb6abace521f17ba477a3e871ef77db916
+deleted: sha256:a9f80ecb7296ed7194ac2ae934029f365be955f4c076ef9f29e2fa504521eefc
+deleted: sha256:53a9726cd7e6017f3439ffa4646931c368032684d8f31f23b2913034f42761ec
+deleted: sha256:4d2494587cc3db68b94b19ae74b38ef1fd042476576c66efa0ec28e3b0af3ba0
+deleted: sha256:13ce634c11b226af0cb3f255dc1ed30fe4719536c429226ab92c0c7cd8f9c726
+deleted: sha256:13344b4e6a1c5c4fc62d3f2a38033a9df1cc23a7e48f8d07b01043aab1266426
+deleted: sha256:588820f03318d8768fbdd705344d291a4c26fb347193dc59e4009a60ef55201e
+deleted: sha256:3b60e57d0f8883562dea6e585e9b7a6fd7a90d5bde6f8bad05f478f9ccca58a3
+deleted: sha256:cf0a2d74ac257331e28eb765378371389dc393bd1cb6e027066e1bfc1e249075
+deleted: sha256:7dcdb3e28ed5825b37eb4178cbbd488135cb609f14b704b9fc25353d9c901d97
+deleted: sha256:e8c33916ceeb12eab3aa1dac8f86d7be9e17b5d746e7dbcabeb211a717b1a13b
+deleted: sha256:fe2d8b24f1b469c4461230683625b17ee4c60591f3fae630a71e9f9820e8e66b
+deleted: sha256:55832181b1f187675c8fc4f62928aeb0d431107b8a14ad5634507741f63f5ed4
+deleted: sha256:bb7289c72b8e2c22d2f874ef61d723a94264c386ea53a111a03117cd3a8b656e
+deleted: sha256:4762b053b0aa36537d1c0c82bc02a2979933dadebf85c76dc096ee41d393db67
+deleted: sha256:6b9c4940030150f8eeb6f09932f0a0f296314758a1a62c6c48f306009493834c
+deleted: sha256:f22a04d22e1098bbdf55191eb63ce7020c2a7c7216377666fdb188b0d091191b
+deleted: sha256:c644f9ea1ee746b4cfc3a88a124dcf9f96714cfe0be78eff1ac54a38caccddc0
+deleted: sha256:1e4b3cfca2f1f8183875164397c6faf64de027bc68ceb942f889d70410af2572
+deleted: sha256:cc1cddc6f9ed9913363f0110113723fc7d5f6b3efe9a945d0801f8f62c3c526e
+deleted: sha256:fed255216a49a0537e77539125ba84c07bc59b141312a79759bd5af9f112635c
+deleted: sha256:9ad004ae5c648c1f3105a6a3d0ce0fc09db2a29d8e2ed26fa1c3c72057210fea
+deleted: sha256:565131957406c2fb9ec4f8d4b5ccf5c9497bae0f2b16ab534400f92e85cfb530
+deleted: sha256:b9cd09e16ccb0e2c01ab035a258d8be86acda99743bc9ef215cc9df9e2ddefaf
+deleted: sha256:82355ab1f1758a1ef6a863ca7b59b7d28f2effa305cc7ebcee82dbef793a4086
+deleted: sha256:2bb02c9189fa380a231bc35c9a231174375a50e1aecf087384a5f9781b39a5e5
+deleted: sha256:1835a24b8d8c8ea4513bb0b8f79f61d7809580ec2cd0bbde4ded00a6c507d9f3
+deleted: sha256:8f4c5a2b63074295ae2615669878a384739bffb72a3ab5590aaf7f0f1a667b36
+deleted: sha256:624e32eb2a86e4dad2fe1201bf5a9ec018f4e74a671956be4f22e6a81a04abe3
+deleted: sha256:5dfe23c322a868ff47e2d727661f5fecfd395c6d4ae6bdc8aa765fbe4069b903
+deleted: sha256:9cbdef20a4191a90cfed82dbe7ca7934b752a000e68072b8f24b37e6c4b5faa8
+deleted: sha256:478015539130456967651c148efec357f183c1843e2b0f85af3c655bf231def7
+deleted: sha256:d55513f503102ca764e45af5d778a1b9fc8d88578b849ebeaa76425be717f1ec
+deleted: sha256:f2e0c1f273b4445e5c9a5b0fabdd9b8a0537763ab01ada79666e2e115e46b49c
+deleted: sha256:69a5192fb9560d61bc26dd76995b708f5a7f661425ff6b8ef1cc8938052ece8c
+deleted: sha256:67c539713b5499731502eb894cc190904e544aeba26cf6f9737173e302de1643
+deleted: sha256:26a6643b158d32c2f5856a417cc866009f4476e63530a918c9181e0e29993bef
+deleted: sha256:1447aad6f9d755548a7e01e6aaa19c9dc18bf027cca32b18027316bd7b711819
+deleted: sha256:95843090dbad8bcf0bbe11f2ff16ab3ef0e269823d0001dec5745cd4a7b5275f
+deleted: sha256:a367d5a88dadfa1daeeb780a0ecc49c539d3aa56f233f868ec91cbef8d1fd557
+deleted: sha256:16b80672802097e4119e48c03ee2d5fa63ad640f260af9a7b218b1311b55088c
+deleted: sha256:2270274f4b801e9dc8512bcd94a3a73a801bd3004687f244530b771f28f49abe
+deleted: sha256:1ef8b8f2aa13a0af639daf03066434a42f16e69e94c167fc9945287b01081a7d
+
+Total reclaimed space: 1.564GB
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ docker image ls
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+paketobuildpacks/run              base-cnb         401511bdd9f6   13 days ago     87MB
+confluentinc/ksqldb-examples      7.2.1            ae252c2780c4   8 months ago    815MB
+confluentinc/cp-ksqldb-server     7.2.1            140d2ac32177   8 months ago    1.36GB
+confluentinc/cp-ksqldb-cli        7.2.1            287039530a46   8 months ago    857MB
+confluentinc/cp-schema-registry   7.2.1            afaac043dcc1   8 months ago    1.86GB
+confluentinc/cp-kafka             7.2.1            d893473a6510   8 months ago    782MB
+confluentinc/cp-kafka             latest           d893473a6510   8 months ago    782MB
+confluentinc/cp-zookeeper         7.2.1            3f28db6a433d   8 months ago    782MB
+confluentinc/cp-zookeeper         latest           3f28db6a433d   8 months ago    782MB
+confluentinc/cp-kafka-rest        7.2.1            784b8061ad0c   8 months ago    1.76GB
+cnfldemos/kafka-connect-datagen   0.5.3-7.1.0      de0e2396b904   12 months ago   1.46GB
+zookeeper                         3.6.2            a72350516291   23 months ago   268MB
+bsucaciu/kafka                    2.6.0            cbe9ab39d5fc   2 years ago     642MB
+bsucaciu/kerberos-producer        1.0.0            eb27c056cc20   2 years ago     354MB
+bsucaciu/kerberos-consumer        1.0.0            5486c13e058b   2 years ago     354MB
+bsucaciu/kerberos                 krb5             ce76df4cb4a8   2 years ago     61MB
+catalog-service                   0.0.1-SNAPSHOT   60795747b2e6   43 years ago    274MB
+paketobuildpacks/builder          base             d0c5f15ea098   43 years ago    1.15GB
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ kind create cluster --name cat-svc --wait 2m
+Creating cluster "cat-svc" ...
+ ✓ Ensuring node image (kindest/node:v1.25.3) 🖼
+ ✓ Preparing nodes 📦
+ ✓ Writing configuration 📜
+ ✓ Starting control-plane 🕹️
+ ✓ Installing CNI 🔌
+ ✓ Installing StorageClass 💾
+ ✓ Waiting ≤ 2m0s for control-plane = Ready ⏳
+ • Ready after 19s 💚
+Set kubectl context to "kind-cat-svc"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-cat-svc
+
+Have a nice day! 👋
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ kind get clusters
+cat-svc
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ kind load docker-image catalog-service:0.0.1-SNAPSHOT --name cat-svc
+Image: "" with ID "sha256:60795747b2e659f4a5c5694a0644004b8098745217863be921eed0ab64ada1c8" not yet present on node "cat-svc-control-plane", loading...
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ docker ps
+CONTAINER ID   IMAGE                  COMMAND                  CREATED              STATUS              PORTS                       NAMES
+dbd7d0717346   kindest/node:v1.25.3   "/usr/local/bin/entr…"   About a minute ago   Up About a minute   127.0.0.1:40759->6443/tcp   cat-svc-control-plane
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ docker exec -it cat-svc-control-plane crictl images
+IMAGE                                      TAG                  IMAGE ID            SIZE
+docker.io/kindest/kindnetd                 v20221004-44d545d1   d6e3e26021b60       25.8MB
+docker.io/kindest/local-path-helper        v20220607-9a4d8d2a   d2f902e939cc3       2.86MB
+docker.io/kindest/local-path-provisioner   v0.0.22-kind.0       4c1e997385b8f       17.4MB
+docker.io/library/catalog-service          0.0.1-SNAPSHOT       60795747b2e65       279MB
+registry.k8s.io/coredns/coredns            v1.9.3               5185b96f0becf       14.8MB
+registry.k8s.io/etcd                       3.5.4-0              a8a176a5d5d69       102MB
+registry.k8s.io/kube-apiserver             v1.25.3              4bc1b1e750e34       76.5MB
+registry.k8s.io/kube-controller-manager    v1.25.3              580dca99efc3b       64.5MB
+registry.k8s.io/kube-proxy                 v1.25.3              86063cd68dfc9       63.3MB
+registry.k8s.io/kube-scheduler             v1.25.3              5225724a11400       51.9MB
+registry.k8s.io/pause                      3.7                  221177c6082a8       311kB
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ kubectl create deployment catalog-service --image=catalog-service:0.0.1-SNAPSHOT
+deployment.apps/catalog-service created
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ kubectl get deployment
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+catalog-service   1/1     1            1           17s
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ kubectl get pod
+NAME                               READY   STATUS    RESTARTS   AGE
+catalog-service-6c6f69cc56-wtjd9   1/1     Running   0          36s
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ kubectl expose deployment catalog-service --name=catalog-service --port=8080
+service/catalog-service exposed
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ kubectl get service catalog-service
+NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+catalog-service   ClusterIP   10.96.150.133   <none>        8080/TCP   15s
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ kubectl port-forward service/catalog-service 8000:8080
+Forwarding from 127.0.0.1:8000 -> 8080
+Forwarding from [::1]:8000 -> 8080
+Handling connection for 8000
+Handling connection for 8000
+Handling connection for 8000
+^Cwillem@linux-laptop:~/git/cloud-native-spring-in-action$ kind delete cluster --name cat-svc
+Deleting cluster "cat-svc" ...
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ kind get clusters
+No kind clusters found.
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ docker image ls
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+paketobuildpacks/run              base-cnb         401511bdd9f6   13 days ago     87MB
+kindest/node                      <none>           d8644f660df0   5 months ago    898MB
+confluentinc/ksqldb-examples      7.2.1            ae252c2780c4   8 months ago    815MB
+confluentinc/cp-ksqldb-server     7.2.1            140d2ac32177   8 months ago    1.36GB
+confluentinc/cp-ksqldb-cli        7.2.1            287039530a46   8 months ago    857MB
+confluentinc/cp-schema-registry   7.2.1            afaac043dcc1   8 months ago    1.86GB
+confluentinc/cp-kafka             7.2.1            d893473a6510   8 months ago    782MB
+confluentinc/cp-kafka             latest           d893473a6510   8 months ago    782MB
+confluentinc/cp-zookeeper         7.2.1            3f28db6a433d   8 months ago    782MB
+confluentinc/cp-zookeeper         latest           3f28db6a433d   8 months ago    782MB
+confluentinc/cp-kafka-rest        7.2.1            784b8061ad0c   8 months ago    1.76GB
+cnfldemos/kafka-connect-datagen   0.5.3-7.1.0      de0e2396b904   12 months ago   1.46GB
+zookeeper                         3.6.2            a72350516291   23 months ago   268MB
+bsucaciu/kafka                    2.6.0            cbe9ab39d5fc   2 years ago     642MB
+bsucaciu/kerberos-producer        1.0.0            eb27c056cc20   2 years ago     354MB
+bsucaciu/kerberos-consumer        1.0.0            5486c13e058b   2 years ago     354MB
+bsucaciu/kerberos                 krb5             ce76df4cb4a8   2 years ago     61MB
+paketobuildpacks/builder          base             d0c5f15ea098   43 years ago    1.15GB
+catalog-service                   0.0.1-SNAPSHOT   60795747b2e6   43 years ago    274MB
+willem@linux-laptop:~/git/cloud-native-spring-in-action$
+

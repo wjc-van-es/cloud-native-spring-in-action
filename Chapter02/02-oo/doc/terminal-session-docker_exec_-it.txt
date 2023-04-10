@@ -1,0 +1,76 @@
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo$ docker ps -a
+CONTAINER ID   IMAGE                            COMMAND                  CREATED          STATUS             PORTS                                       NAMES
+199c6d1a5ff4   catalog-service:0.0.1-SNAPSHOT   "/cnb/process/web"       17 seconds ago   Up 15 seconds      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   catalog-service
+bcd66a4b95c7   kindest/node:v1.25.3             "/usr/local/bin/entr…"   25 hours ago     Up About an hour   127.0.0.1:44757->6443/tcp                   kind-control-plane
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo$ docker exec -it catalog-service bash
+cnb@199c6d1a5ff4:/workspace$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay         916G  127G  743G  15% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/nvme0n1p2  916G  127G  743G  15% /etc/hosts
+tmpfs            16G     0   16G   0% /proc/asound
+tmpfs            16G     0   16G   0% /proc/acpi
+tmpfs            16G     0   16G   0% /proc/scsi
+tmpfs            16G     0   16G   0% /sys/firmware
+cnb@199c6d1a5ff4:/workspace$ java -XshowSettings:properties -version
+bash: java: command not found
+cnb@199c6d1a5ff4:/workspace$ java -XshowSettings:properties --version
+bash: java: command not found
+cnb@199c6d1a5ff4:/workspace$ top
+top - 20:15:16 up  1:27,  0 users,  load average: 1.26, 1.17, 1.24
+Tasks:   3 total,   1 running,   2 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.9 us,  1.4 sy,  0.0 ni, 96.4 id,  0.3 wa,  0.0 hi,  0.1 si,  0.0 st
+KiB Mem : 32571736 total, 19016932 free,  6429476 used,  7125328 buff/cache
+KiB Swap:  2359288 total,  2359288 free,        0 used. 24749616 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+      1 cnb       20   0 24.953g 176628  25924 S   0.0  0.5   0:06.09 java
+    145 cnb       20   0   18520   3268   2876 S   0.0  0.0   0:00.02 bash
+    156 cnb       20   0   36500   3044   2652 R   0.0  0.0   0:00.01 top
+
+
+
+
+
+cnb@199c6d1a5ff4:/workspace$ ls -la
+total 20
+drwxr-xr-x 1 cnb  cnb  4096 Jan  1  1980 .
+drwxr-xr-x 1 root root 4096 Apr  9 20:08 ..
+drwxr-xr-x 1 cnb  cnb  4096 Jan  1  1980 BOOT-INF
+drwxr-xr-x 3 cnb  cnb  4096 Jan  1  1980 META-INF
+drwxr-xr-x 3 cnb  cnb  4096 Jan  1  1980 org
+cnb@199c6d1a5ff4:/workspace$ cd ..
+cnb@199c6d1a5ff4:/$ ls -la
+total 88
+drwxr-xr-x   1 root root 4096 Apr  9 20:08 .
+drwxr-xr-x   1 root root 4096 Apr  9 20:08 ..
+-rwxr-xr-x   1 root root    0 Apr  9 20:08 .dockerenv
+drwxr-xr-x   2 root root 4096 Mar  8 02:06 bin
+drwxr-xr-x   2 root root 4096 Apr 24  2018 boot
+drwxr-xr-x   1 root root 4096 Jan  1  1980 cnb
+drwxr-xr-x   5 root root  340 Apr  9 20:08 dev
+drwxr-xr-x   1 root root 4096 Apr  9 20:08 etc
+drwxr-xr-x   1 root root 4096 Apr  8 20:33 home
+drwxr-xr-x   1 cnb  cnb  4096 Jan  1  1980 layers
+drwxr-xr-x   1 root root 4096 May 23  2017 lib
+drwxr-xr-x   2 root root 4096 Mar  8 02:06 lib64
+drwxr-xr-x   2 root root 4096 Mar  8 02:05 media
+drwxr-xr-x   2 root root 4096 Mar  8 02:05 mnt
+drwxr-xr-x   2 root root 4096 Mar  8 02:05 opt
+dr-xr-xr-x 522 root root    0 Apr  9 20:08 proc
+drwx------   2 root root 4096 Mar  8 02:06 root
+drwxr-xr-x   5 root root 4096 Mar  8 02:06 run
+drwxr-xr-x   2 root root 4096 Mar  8 02:06 sbin
+drwxr-xr-x   2 root root 4096 Mar  8 02:05 srv
+dr-xr-xr-x  13 root root    0 Apr  9 20:08 sys
+drwxrwxrwt   1 root root 4096 Apr  9 20:08 tmp
+drwxr-xr-x   1 root root 4096 Mar  8 02:05 usr
+drwxr-xr-x   1 root root 4096 Mar  8 02:06 var
+drwxr-xr-x   1 cnb  cnb  4096 Jan  1  1980 workspace
+cnb@199c6d1a5ff4:/$ cat .dockerenv
+cnb@199c6d1a5ff4:/$ cd .dockerenv
+bash: cd: .dockerenv: Not a directory
+cnb@199c6d1a5ff4:/$ exit
+exit
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo$
