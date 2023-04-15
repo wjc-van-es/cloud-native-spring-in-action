@@ -1,0 +1,11 @@
+We read the first two sections 3.1 and 3.2.
+As we add n-oo directories for our own development building experiments and we could get a clash between
+different chapter versions of the same application modules like catalog-service we will choose to extend them
+with the chapter number n in the root dir name, the project/artifactId and project/name values of the pom.xml
+file. Therefore, for this being Chapter03 the name will be catalog-service-03.
+The consequence is that the name of the Docker image will be
+catalog-service-03-0.0.1-SNAPSHOT and of the fat jar target/catalog-service-03-0.0.1-SNAPSHOT.jar
+
+This needed to be modified in our current version of Chapter03/03-oo/catalog-service-03/docker-compose.yml
+In this file the port forwarding was changed as well to reflect the server port that was configured in
+Chapter03/03-oo/catalog-service-03/src/main/resources/application.yml

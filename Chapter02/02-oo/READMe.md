@@ -4,8 +4,8 @@ favorite method. This guide describes how to do that with the Spring Initializr 
 Either way, you'll get a zip archive that you can extract and import in your IDE.
 
 ## Aspects
-- [SDKMan! set up and configuration](doc/sdkman.md)
-- [Maven set up and use](doc/mvn.md)
+- [SDKMan! set up and configuration](../../doc/sdkman.md)
+- [Maven set up and use](../../doc/mvn.md)
 - [Spring Boot](doc/spring_boot.md)
-- [Kubernetes local setup of kind](doc/k8s.md)
+- [Kubernetes local setup of kind](../../doc/k8s.md)
 

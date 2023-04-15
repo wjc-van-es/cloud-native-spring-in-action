@@ -46,7 +46,7 @@ system and will yield repeatable and consistent results.
 At [https://www.composerize.com/](https://www.composerize.com/) we can convert a docker run command in a 
 `docker-compose.yml` file as a starting point to use docker compose.
 
-We can find the result in [../docker-compose.yml](/Chapter02/02-oo/catalog-service/docker-compose.yml).
+We can find the result in [../Chapter02/02-oo/catalog-service-02/docker-compose.yml](../Chapter02/02-oo/catalog-service-02/docker-compose.yml).
 
 ## Running with docker compose
 ```bash
