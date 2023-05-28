@@ -1,0 +1,665 @@
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ sdk update
+
+No new candidates found at this time.
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ sdk current java
+
+Using java version 11.0.18-tem
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ sdk env
+Could not find .sdkmanrc in the current directory.
+
+Run 'sdk env init' to create it.
+willem@linux-laptop:~/git/cloud-native-spring-in-action$ cd Chapter03/03-oo/catalog-service-03/
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ sdk env
+
+Using java version 17.0.6-tem in this shell.
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ java -XshowSettings:properties --version
+Property settings:
+    file.encoding = UTF-8
+    file.separator = /
+    java.class.path =
+    java.class.version = 61.0
+    java.home = /home/willem/.sdkman/candidates/java/17.0.6-tem
+    java.io.tmpdir = /tmp
+    java.library.path = /usr/java/packages/lib
+        /usr/lib64
+        /lib64
+        /lib
+        /usr/lib
+    java.runtime.name = OpenJDK Runtime Environment
+    java.runtime.version = 17.0.6+10
+    java.specification.name = Java Platform API Specification
+    java.specification.vendor = Oracle Corporation
+    java.specification.version = 17
+    java.vendor = Eclipse Adoptium
+    java.vendor.url = https://adoptium.net/
+    java.vendor.url.bug = https://github.com/adoptium/adoptium-support/issues
+    java.vendor.version = Temurin-17.0.6+10
+    java.version = 17.0.6
+    java.version.date = 2023-01-17
+    java.vm.compressedOopsMode = Zero based
+    java.vm.info = mixed mode, sharing
+    java.vm.name = OpenJDK 64-Bit Server VM
+    java.vm.specification.name = Java Virtual Machine Specification
+    java.vm.specification.vendor = Oracle Corporation
+    java.vm.specification.version = 17
+    java.vm.vendor = Eclipse Adoptium
+    java.vm.version = 17.0.6+10
+    jdk.debug = release
+    line.separator = \n
+    native.encoding = UTF-8
+    os.arch = amd64
+    os.name = Linux
+    os.version = 5.19.0-42-generic
+    path.separator = :
+    sun.arch.data.model = 64
+    sun.boot.library.path = /home/willem/.sdkman/candidates/java/17.0.6-tem/lib
+    sun.cpu.endian = little
+    sun.io.unicode.encoding = UnicodeLittle
+    sun.java.launcher = SUN_STANDARD
+    sun.jnu.encoding = UTF-8
+    sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+    sun.stderr.encoding = UTF-8
+    sun.stdout.encoding = UTF-8
+    user.country = US
+    user.dir = /home/willem/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03
+    user.home = /home/willem
+    user.language = en
+    user.name = willem
+
+openjdk 17.0.6 2023-01-17
+OpenJDK Runtime Environment Temurin-17.0.6+10 (build 17.0.6+10)
+OpenJDK 64-Bit Server VM Temurin-17.0.6+10 (build 17.0.6+10, mixed mode, sharing)
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ ./mvnw spring-boot:build-image
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------< com.polarbookshop:catalog-service-03 >----------------
+[INFO] Building catalog-service-03 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] >>> spring-boot-maven-plugin:3.0.5:build-image (default-cli) > package @ catalog-service-03 >>>
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.0:resources (default-resources) @ catalog-service-03 ---
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO]
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ catalog-service-03 ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.0:testResources (default-testResources) @ catalog-service-03 ---
+[INFO] skip non existing resourceDirectory /home/willem/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03/src/test/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ catalog-service-03 ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ catalog-service-03 ---
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.polarbookshop.catalogservice.CatalogServiceApplicationTests
+22:14:04.665 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Neither @ContextConfiguration nor @ContextHierarchy found for test class [CatalogServiceApplicationTests]: using SpringBootContextLoader
+22:14:04.667 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader -- Could not detect default resource locations for test class [com.polarbookshop.catalogservice.CatalogServiceApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+22:14:04.667 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.polarbookshop.catalogservice.CatalogServiceApplicationTests]: CatalogServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:14:04.676 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using ContextCustomizers for test class [CatalogServiceApplicationTests]: [ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer]
+22:14:04.708 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider -- Identified candidate component class: file [/home/willem/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03/target/classes/com/polarbookshop/catalogservice/CatalogServiceApplication.class]
+22:14:04.714 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.polarbookshop.catalogservice.CatalogServiceApplication for test class com.polarbookshop.catalogservice.CatalogServiceApplicationTests
+22:14:04.750 [main] DEBUG org.springframework.test.context.util.TestContextSpringFactoriesUtils -- Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom TestExecutionListener classes or make the default TestExecutionListener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+22:14:04.750 [main] DEBUG org.springframework.test.context.util.TestContextSpringFactoriesUtils -- Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom TestExecutionListener classes or make the default TestExecutionListener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+22:14:04.751 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using TestExecutionListeners for test class [CatalogServiceApplicationTests]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, EventPublishingTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
+22:14:04.752 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener -- Before test class: class [CatalogServiceApplicationTests], class annotated with @DirtiesContext [false] with mode [null]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-05-28T22:14:04.905+02:00  INFO 9145 --- [           main] c.p.c.CatalogServiceApplicationTests     : Starting CatalogServiceApplicationTests using Java 17.0.6 with PID 9145 (started by willem in /home/willem/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03)
+2023-05-28T22:14:04.906+02:00  INFO 9145 --- [           main] c.p.c.CatalogServiceApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-05-28T22:14:05.510+02:00  INFO 9145 --- [           main] c.p.c.CatalogServiceApplicationTests     : Started CatalogServiceApplicationTests in 0.742 seconds (process running for 1.142)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.115 s - in com.polarbookshop.catalogservice.CatalogServiceApplicationTests
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- maven-jar-plugin:3.3.0:jar (default-jar) @ catalog-service-03 ---
+[INFO]
+[INFO] --- spring-boot-maven-plugin:3.0.5:repackage (repackage) @ catalog-service-03 ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO]
+[INFO] <<< spring-boot-maven-plugin:3.0.5:build-image (default-cli) < package @ catalog-service-03 <<<
+[INFO]
+[INFO]
+[INFO] --- spring-boot-maven-plugin:3.0.5:build-image (default-cli) @ catalog-service-03 ---
+[INFO] Building image 'docker.io/library/catalog-service-03:0.0.1-SNAPSHOT'
+[INFO]
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 1%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 2%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 3%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 5%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 6%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 9%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 10%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 12%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 13%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 18%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 28%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 38%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 46%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 50%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 56%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 58%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 61%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 66%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 76%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 83%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 87%
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder:base' 100%
+[INFO]  > Pulled builder image 'paketobuildpacks/builder@sha256:40399222896ffa2646da6586857e157612b32ff1e06bde3c223179f8750fff18'
+[INFO]  > Pulling run image 'docker.io/paketobuildpacks/run:base-cnb' 21%
+[INFO]  > Pulling run image 'docker.io/paketobuildpacks/run:base-cnb' 100%
+[INFO]  > Pulled run image 'paketobuildpacks/run@sha256:e2edee82a4cf1a65b2813de97a98b976ffc2a2ec6316a92c289254ce1f7cbdb6'
+[INFO]  > Executing lifecycle version v0.16.3
+[INFO]  > Using build cache volume 'pack-cache-f504f211694a.build'
+[INFO]
+[INFO]  > Running creator
+[INFO]     [creator]     ===> ANALYZING
+[INFO]     [creator]     Restoring data for SBOM from previous image
+[INFO]     [creator]     ===> DETECTING
+[INFO]     [creator]     6 of 26 buildpacks participating
+[INFO]     [creator]     paketo-buildpacks/ca-certificates   3.6.1
+[INFO]     [creator]     paketo-buildpacks/bellsoft-liberica 10.2.3
+[INFO]     [creator]     paketo-buildpacks/syft              1.30.1
+[INFO]     [creator]     paketo-buildpacks/executable-jar    6.7.2
+[INFO]     [creator]     paketo-buildpacks/dist-zip          5.6.2
+[INFO]     [creator]     paketo-buildpacks/spring-boot       5.25.1
+[INFO]     [creator]     ===> RESTORING
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/ca-certificates:helper" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/bellsoft-liberica:helper" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/bellsoft-liberica:java-security-properties" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/bellsoft-liberica:jre" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/syft:syft" from cache
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/spring-boot:helper" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/spring-boot:spring-cloud-bindings" from app image
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/spring-boot:web-application-type" from app image
+[INFO]     [creator]     Restoring data for "paketo-buildpacks/syft:syft" from cache
+[INFO]     [creator]     Restoring data for SBOM from cache
+[INFO]     [creator]     ===> BUILDING
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for CA Certificates 3.6.1
+[INFO]     [creator]       https://github.com/paketo-buildpacks/ca-certificates
+[INFO]     [creator]       Launch Helper: Reusing cached layer
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for BellSoft Liberica 10.2.3
+[INFO]     [creator]       https://github.com/paketo-buildpacks/bellsoft-liberica
+[INFO]     [creator]       Build Configuration:
+[INFO]     [creator]         $BP_JVM_JLINK_ARGS           --no-man-pages --no-header-files --strip-debug --compress=1  configure custom link arguments (--output must be omitted)
+[INFO]     [creator]         $BP_JVM_JLINK_ENABLED        false                                                        enables running jlink tool to generate custom JRE
+[INFO]     [creator]         $BP_JVM_TYPE                 JRE                                                          the JVM type - JDK or JRE
+[INFO]     [creator]         $BP_JVM_VERSION              17                                                           the Java version
+[INFO]     [creator]       Launch Configuration:
+[INFO]     [creator]         $BPL_DEBUG_ENABLED           false                                                        enables Java remote debugging support
+[INFO]     [creator]         $BPL_DEBUG_PORT              8000                                                         configure the remote debugging port
+[INFO]     [creator]         $BPL_DEBUG_SUSPEND           false                                                        configure whether to suspend execution until a debugger has attached
+[INFO]     [creator]         $BPL_HEAP_DUMP_PATH                                                                       write heap dumps on error to this path
+[INFO]     [creator]         $BPL_JAVA_NMT_ENABLED        true                                                         enables Java Native Memory Tracking (NMT)
+[INFO]     [creator]         $BPL_JAVA_NMT_LEVEL          summary                                                      configure level of NMT, summary or detail
+[INFO]     [creator]         $BPL_JFR_ARGS                                                                             configure custom Java Flight Recording (JFR) arguments
+[INFO]     [creator]         $BPL_JFR_ENABLED             false                                                        enables Java Flight Recording (JFR)
+[INFO]     [creator]         $BPL_JMX_ENABLED             false                                                        enables Java Management Extensions (JMX)
+[INFO]     [creator]         $BPL_JMX_PORT                5000                                                         configure the JMX port
+[INFO]     [creator]         $BPL_JVM_HEAD_ROOM           0                                                            the headroom in memory calculation
+[INFO]     [creator]         $BPL_JVM_LOADED_CLASS_COUNT  35% of classes                                               the number of loaded classes in memory calculation
+[INFO]     [creator]         $BPL_JVM_THREAD_COUNT        250                                                          the number of threads in memory calculation
+[INFO]     [creator]         $JAVA_TOOL_OPTIONS                                                                        the JVM launch flags
+[INFO]     [creator]         Using Java version 17 extracted from MANIFEST.MF
+[INFO]     [creator]       BellSoft Liberica JRE 17.0.7: Contributing to layer
+[INFO]     [creator]         Downloading from https://github.com/bell-sw/Liberica/releases/download/17.0.7+7/bellsoft-jre17.0.7+7-linux-amd64.tar.gz
+[INFO]     [creator]         Verifying checksum
+[INFO]     [creator]         Expanding to /layers/paketo-buildpacks_bellsoft-liberica/jre
+[INFO]     [creator]         Adding 137 container CA certificates to JVM truststore
+[INFO]     [creator]         Writing env.launch/BPI_APPLICATION_PATH.default
+[INFO]     [creator]         Writing env.launch/BPI_JVM_CACERTS.default
+[INFO]     [creator]         Writing env.launch/BPI_JVM_CLASS_COUNT.default
+[INFO]     [creator]         Writing env.launch/BPI_JVM_SECURITY_PROVIDERS.default
+[INFO]     [creator]         Writing env.launch/JAVA_HOME.default
+[INFO]     [creator]         Writing env.launch/JAVA_TOOL_OPTIONS.append
+[INFO]     [creator]         Writing env.launch/JAVA_TOOL_OPTIONS.delim
+[INFO]     [creator]         Writing env.launch/MALLOC_ARENA_MAX.default
+[INFO]     [creator]       Launch Helper: Contributing to layer
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/active-processor-count
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/java-opts
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/jvm-heap
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/link-local-dns
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/memory-calculator
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/security-providers-configurer
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/jmx
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/jfr
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/security-providers-classpath-9
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/debug-9
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/nmt
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_bellsoft-liberica/helper/exec.d/openssl-certificate-loader
+[INFO]     [creator]       Java Security Properties: Contributing to layer
+[INFO]     [creator]         Writing env.launch/JAVA_SECURITY_PROPERTIES.default
+[INFO]     [creator]         Writing env.launch/JAVA_TOOL_OPTIONS.append
+[INFO]     [creator]         Writing env.launch/JAVA_TOOL_OPTIONS.delim
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for Syft 1.30.1
+[INFO]     [creator]       https://github.com/paketo-buildpacks/syft
+[INFO]     [creator]         Downloading from https://github.com/anchore/syft/releases/download/v0.80.0/syft_0.80.0_linux_amd64.tar.gz
+[INFO]     [creator]         Verifying checksum
+[INFO]     [creator]         Writing env.build/SYFT_CHECK_FOR_APP_UPDATE.default
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for Executable JAR 6.7.2
+[INFO]     [creator]       https://github.com/paketo-buildpacks/executable-jar
+[INFO]     [creator]       Class Path: Contributing to layer
+[INFO]     [creator]         Writing env/CLASSPATH.delim
+[INFO]     [creator]         Writing env/CLASSPATH.prepend
+[INFO]     [creator]       Process types:
+[INFO]     [creator]         executable-jar: java org.springframework.boot.loader.JarLauncher (direct)
+[INFO]     [creator]         task:           java org.springframework.boot.loader.JarLauncher (direct)
+[INFO]     [creator]         web:            java org.springframework.boot.loader.JarLauncher (direct)
+[INFO]     [creator]
+[INFO]     [creator]     Paketo Buildpack for Spring Boot 5.25.1
+[INFO]     [creator]       https://github.com/paketo-buildpacks/spring-boot
+[INFO]     [creator]       Build Configuration:
+[INFO]     [creator]         $BP_SPRING_CLOUD_BINDINGS_DISABLED   false  whether to contribute Spring Boot cloud bindings support
+[INFO]     [creator]       Launch Configuration:
+[INFO]     [creator]         $BPL_SPRING_CLOUD_BINDINGS_DISABLED  false  whether to auto-configure Spring Boot environment properties from bindings
+[INFO]     [creator]         $BPL_SPRING_CLOUD_BINDINGS_ENABLED   true   Deprecated - whether to auto-configure Spring Boot environment properties from bindings
+[INFO]     [creator]       Creating slices from layers index
+[INFO]     [creator]         dependencies (17.6 MB)
+[INFO]     [creator]         spring-boot-loader (269.4 KB)
+[INFO]     [creator]         snapshot-dependencies (0.0 B)
+[INFO]     [creator]         application (37.6 KB)
+[INFO]     [creator]       Launch Helper: Contributing to layer
+[INFO]     [creator]         Creating /layers/paketo-buildpacks_spring-boot/helper/exec.d/spring-cloud-bindings
+[INFO]     [creator]       Spring Cloud Bindings 1.13.0: Contributing to layer
+[INFO]     [creator]         Downloading from https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-bindings/1.13.0/spring-cloud-bindings-1.13.0.jar
+[INFO]     [creator]         Verifying checksum
+[INFO]     [creator]         Copying to /layers/paketo-buildpacks_spring-boot/spring-cloud-bindings
+[INFO]     [creator]       Web Application Type: Reusing cached layer
+[INFO]     [creator]       4 application slices
+[INFO]     [creator]       Image labels:
+[INFO]     [creator]         org.opencontainers.image.title
+[INFO]     [creator]         org.opencontainers.image.version
+[INFO]     [creator]         org.springframework.boot.version
+[INFO]     [creator]     ===> EXPORTING
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/ca-certificates:helper'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/bellsoft-liberica:helper'
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/bellsoft-liberica:java-security-properties'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/bellsoft-liberica:jre'
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/executable-jar:classpath'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/spring-boot:helper'
+[INFO]     [creator]     Adding layer 'paketo-buildpacks/spring-boot:spring-cloud-bindings'
+[INFO]     [creator]     Reusing layer 'paketo-buildpacks/spring-boot:web-application-type'
+[INFO]     [creator]     Adding layer 'buildpacksio/lifecycle:launch.sbom'
+[INFO]     [creator]     Reusing 4/5 app layer(s)
+[INFO]     [creator]     Adding 1/5 app layer(s)
+[INFO]     [creator]     Adding layer 'buildpacksio/lifecycle:launcher'
+[INFO]     [creator]     Adding layer 'buildpacksio/lifecycle:config'
+[INFO]     [creator]     Reusing layer 'buildpacksio/lifecycle:process-types'
+[INFO]     [creator]     Adding label 'io.buildpacks.lifecycle.metadata'
+[INFO]     [creator]     Adding label 'io.buildpacks.build.metadata'
+[INFO]     [creator]     Adding label 'io.buildpacks.project.metadata'
+[INFO]     [creator]     Adding label 'org.opencontainers.image.title'
+[INFO]     [creator]     Adding label 'org.opencontainers.image.version'
+[INFO]     [creator]     Adding label 'org.springframework.boot.version'
+[INFO]     [creator]     Setting default process type 'web'
+[INFO]     [creator]     Saving docker.io/library/catalog-service-03:0.0.1-SNAPSHOT...
+[INFO]     [creator]     *** Images (6b4c778c3417):
+[INFO]     [creator]           docker.io/library/catalog-service-03:0.0.1-SNAPSHOT
+[INFO]     [creator]     Adding cache layer 'paketo-buildpacks/syft:syft'
+[INFO]     [creator]     Adding cache layer 'buildpacksio/lifecycle:cache.sbom'
+[INFO]
+[INFO] Successfully built image 'docker.io/library/catalog-service-03:0.0.1-SNAPSHOT'
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:00 min
+[INFO] Finished at: 2023-05-28T22:15:03+02:00
+[INFO] ------------------------------------------------------------------------
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ docker image ls
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+paketobuildpacks/run              base-cnb         ebda85cf0d59   4 days ago      88.2MB
+paketobuildpacks/run              <none>           9cad50d3c33d   6 weeks ago     90.6MB
+confluentinc/ksqldb-examples      7.2.1            ae252c2780c4   10 months ago   815MB
+confluentinc/cp-ksqldb-server     7.2.1            140d2ac32177   10 months ago   1.36GB
+confluentinc/cp-ksqldb-cli        7.2.1            287039530a46   10 months ago   857MB
+confluentinc/cp-schema-registry   7.2.1            afaac043dcc1   10 months ago   1.86GB
+confluentinc/cp-kafka             7.2.1            d893473a6510   10 months ago   782MB
+confluentinc/cp-kafka             latest           d893473a6510   10 months ago   782MB
+confluentinc/cp-zookeeper         7.2.1            3f28db6a433d   10 months ago   782MB
+confluentinc/cp-zookeeper         latest           3f28db6a433d   10 months ago   782MB
+confluentinc/cp-kafka-rest        7.2.1            784b8061ad0c   10 months ago   1.76GB
+cnfldemos/kafka-connect-datagen   0.5.3-7.1.0      de0e2396b904   13 months ago   1.46GB
+zookeeper                         3.6.2            a72350516291   2 years ago     268MB
+bsucaciu/kafka                    2.6.0            cbe9ab39d5fc   2 years ago     642MB
+bsucaciu/kerberos-producer        1.0.0            eb27c056cc20   2 years ago     354MB
+bsucaciu/kerberos-consumer        1.0.0            5486c13e058b   2 years ago     354MB
+bsucaciu/kerberos                 krb5             ce76df4cb4a8   2 years ago     61MB
+<none>                            <none>           82b099c1beb7   43 years ago    278MB
+catalog-service-03                0.0.1-SNAPSHOT   6b4c778c3417   43 years ago    276MB
+catalog-service                   0.0.1-SNAPSHOT   60795747b2e6   43 years ago    274MB
+paketobuildpacks/builder          <none>           9400264deb14   43 years ago    1.2GB
+paketobuildpacks/builder          base             71badb65e5f6   43 years ago    1.41GB
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ docker image inspect catalog-service-03:0.0.1-SNAPSHOT
+[
+    {
+        "Id": "sha256:6b4c778c3417d2ac6193254bb657fe4cde819a9377ca1a1fd1e5a4da60483048",
+        "RepoTags": [
+            "catalog-service-03:0.0.1-SNAPSHOT"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "",
+        "Created": "1980-01-01T00:00:01Z",
+        "Container": "",
+        "ContainerConfig": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": null,
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": null
+        },
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "1000:1000",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/cnb/process:/cnb/lifecycle:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "CNB_LAYERS_DIR=/layers",
+                "CNB_APP_DIR=/workspace",
+                "CNB_PLATFORM_API=0.10",
+                "CNB_DEPRECATION_MODE=quiet"
+            ],
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "/workspace",
+            "Entrypoint": [
+                "/cnb/process/web"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "io.buildpacks.build.metadata": "{\"buildpacks\":[{\"id\":\"paketo-buildpacks/ca-certificates\",\"version\":\"3.6.1\",\"homepage\":\"https://github.com/paketo-buildpacks/ca-certificates\"},{\"id\":\"paketo-buildpacks/bellsoft-liberica\",\"version\":\"10.2.3\",\"homepage\":\"https://github.com/paketo-buildpacks/bellsoft-liberica\"},{\"id\":\"paketo-buildpacks/syft\",\"version\":\"1.30.1\",\"homepage\":\"https://github.com/paketo-buildpacks/syft\"},{\"id\":\"paketo-buildpacks/executable-jar\",\"version\":\"6.7.2\",\"homepage\":\"https://github.com/paketo-buildpacks/executable-jar\"},{\"id\":\"paketo-buildpacks/dist-zip\",\"version\":\"5.6.2\",\"homepage\":\"https://github.com/paketo-buildpacks/dist-zip\"},{\"id\":\"paketo-buildpacks/spring-boot\",\"version\":\"5.25.1\",\"homepage\":\"https://github.com/paketo-buildpacks/spring-boot\"}],\"launcher\":{\"version\":\"0.16.3\",\"source\":{\"git\":{\"repository\":\"github.com/buildpacks/lifecycle\",\"commit\":\"48348d7c\"}}},\"processes\":[{\"type\":\"executable-jar\",\"command\":[\"java\"],\"args\":[\"org.springframework.boot.loader.JarLauncher\"],\"direct\":true,\"buildpackID\":\"paketo-buildpacks/executable-jar\"},{\"type\":\"task\",\"command\":[\"java\"],\"args\":[\"org.springframework.boot.loader.JarLauncher\"],\"direct\":true,\"buildpackID\":\"paketo-buildpacks/executable-jar\"},{\"type\":\"web\",\"command\":[\"java\"],\"args\":[\"org.springframework.boot.loader.JarLauncher\"],\"direct\":true,\"buildpackID\":\"paketo-buildpacks/executable-jar\"}],\"buildpack-default-process-type\":\"web\"}",
+                "io.buildpacks.lifecycle.metadata": "{\"app\":[{\"sha\":\"sha256:844bbbaf08fd9dc4fe1cc64338666a844f31bf92821a45bde59cd7b654a19988\"},{\"sha\":\"sha256:0345504805f0312cf76cb4aab197e263a98d1fbec821459bfe0a1e072137f21c\"},{\"sha\":\"sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef\"},{\"sha\":\"sha256:5a7ad76129855fd115ae4f78c7821f658eb927fabfb53d01c60e88cb0a11f576\"},{\"sha\":\"sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef\"}],\"sbom\":{\"sha\":\"sha256:0362a09a9aaa5bf3b4e553c6b9104332804c1ac2aefaddb158ae4e0c1be4c9fc\"},\"buildpacks\":[{\"key\":\"paketo-buildpacks/ca-certificates\",\"version\":\"3.6.1\",\"layers\":{\"helper\":{\"sha\":\"sha256:6b2e6eafd42fbcd8fb654f4322bb625e07c2247ea90625b1c4d693b8a0b0d0e8\",\"data\":{\"buildpackInfo\":{\"clear-env\":false,\"description\":\"A Cloud Native Buildpack that adds custom CA certificates to a build and a created image\",\"homepage\":\"https://github.com/paketo-buildpacks/ca-certificates\",\"id\":\"paketo-buildpacks/ca-certificates\",\"keywords\":[\"ca-certificates\",\"trust\",\"certificates\"],\"licenses\":[{\"type\":\"Apache-2.0\",\"uri\":\"https://github.com/paketo-buildpacks/ca-certificates/blob/main/LICENSE\"}],\"name\":\"Paketo Buildpack for CA Certificates\",\"sbom-formats\":[\"application/vnd.cyclonedx+json\",\"application/vnd.syft+json\"],\"version\":\"3.6.1\"},\"helperNames\":[\"ca-certificates-helper\"]},\"build\":false,\"launch\":true,\"cache\":false}}},{\"key\":\"paketo-buildpacks/bellsoft-liberica\",\"version\":\"10.2.3\",\"layers\":{\"helper\":{\"sha\":\"sha256:53657920187bd2fbdf13c746371d60e909cce61357e18b88f868d5a92e358b20\",\"data\":{\"buildpackInfo\":{\"clear-env\":false,\"description\":\"A Cloud Native Buildpack that provides the Bellsoft Liberica implementations of JREs and JDKs\",\"homepage\":\"https://github.com/paketo-buildpacks/bellsoft-liberica\",\"id\":\"paketo-buildpacks/bellsoft-liberica\",\"keywords\":[\"java\",\"jvm\",\"jre\",\"jdk\"],\"licenses\":[{\"type\":\"Apache-2.0\",\"uri\":\"https://github.com/paketo-buildpacks/bellsoft-liberica/blob/main/LICENSE\"}],\"name\":\"Paketo Buildpack for BellSoft Liberica\",\"sbom-formats\":[\"application/vnd.syft+json\",\"application/vnd.cyclonedx+json\"],\"version\":\"10.2.3\"},\"helperNames\":[\"active-processor-count\",\"java-opts\",\"jvm-heap\",\"link-local-dns\",\"memory-calculator\",\"security-providers-configurer\",\"jmx\",\"jfr\",\"security-providers-classpath-9\",\"debug-9\",\"nmt\",\"openssl-certificate-loader\"]},\"build\":false,\"launch\":true,\"cache\":false},\"java-security-properties\":{\"sha\":\"sha256:ec0381c8f32136ad9564b114b2271d1181e0c181957acb6707e6ff4713a7a89d\",\"data\":{\"clear-env\":false,\"description\":\"A Cloud Native Buildpack that provides the Bellsoft Liberica implementations of JREs and JDKs\",\"homepage\":\"https://github.com/paketo-buildpacks/bellsoft-liberica\",\"id\":\"paketo-buildpacks/bellsoft-liberica\",\"keywords\":[\"java\",\"jvm\",\"jre\",\"jdk\"],\"licenses\":[{\"type\":\"Apache-2.0\",\"uri\":\"https://github.com/paketo-buildpacks/bellsoft-liberica/blob/main/LICENSE\"}],\"name\":\"Paketo Buildpack for BellSoft Liberica\",\"sbom-formats\":[\"application/vnd.syft+json\",\"application/vnd.cyclonedx+json\"],\"version\":\"10.2.3\"},\"build\":false,\"launch\":true,\"cache\":false},\"jre\":{\"sha\":\"sha256:f245ab22134ec9da25aafafc3571b265fe89b451f7f8507509a4b5186a2b18f4\",\"data\":{\"cert-file\":\"82f3a63130e0b47915659d619f177c8157c2bbb29dbf0f58ad2721ff84fb1190\",\"dependency\":{\"cpes\":[\"cpe:2.3:a:oracle:jre:17.0.7:*:*:*:*:*:*:*\"],\"deprecation_date\":\"0001-01-01T00:00:00Z\",\"id\":\"jre\",\"licenses\":[{\"type\":\"GPL-2.0 WITH Classpath-exception-2.0\",\"uri\":\"https://openjdk.java.net/legal/gplv2+ce.html\"}],\"name\":\"BellSoft Liberica JRE\",\"purl\":\"pkg:generic/bellsoft-jre@17.0.7?arch=amd64\",\"sha256\":\"e80d5884fb25840243f231b01c17364fe0f6ef2d68d090d3aa5bf795d1458261\",\"stacks\":[\"io.buildpacks.stacks.bionic\",\"io.paketo.stacks.tiny\",\"*\"],\"uri\":\"https://github.com/bell-sw/Liberica/releases/download/17.0.7+7/bellsoft-jre17.0.7+7-linux-amd64.tar.gz\",\"version\":\"17.0.7\"}},\"build\":false,\"launch\":true,\"cache\":false}}},{\"key\":\"paketo-buildpacks/syft\",\"version\":\"1.30.1\",\"layers\":{}},{\"key\":\"paketo-buildpacks/executable-jar\",\"version\":\"6.7.2\",\"layers\":{\"classpath\":{\"sha\":\"sha256:7fbc97c38fad01ae2b8189c8d9a0a0149932192accc4ad253b0f8186d0793e9a\",\"data\":{\"classpath\":[\"/workspace\"],\"launch\":true},\"build\":true,\"launch\":true,\"cache\":false}}},{\"key\":\"paketo-buildpacks/dist-zip\",\"version\":\"5.6.2\",\"layers\":{}},{\"key\":\"paketo-buildpacks/spring-boot\",\"version\":\"5.25.1\",\"layers\":{\"helper\":{\"sha\":\"sha256:1692ecc99a7b10eb07aecc002026fb3d18e2f30c0c29e008bd4e8e17ae12e3f5\",\"data\":{\"buildpackInfo\":{\"clear-env\":false,\"description\":\"A Cloud Native Buildpack that contributes Spring Boot dependency information and slices an application into multiple layers\",\"homepage\":\"https://github.com/paketo-buildpacks/spring-boot\",\"id\":\"paketo-buildpacks/spring-boot\",\"keywords\":[\"java\",\"spring\",\"spring-boot\"],\"licenses\":[{\"type\":\"Apache-2.0\",\"uri\":\"https://github.com/paketo-buildpacks/spring-boot/blob/main/LICENSE\"}],\"name\":\"Paketo Buildpack for Spring Boot\",\"sbom-formats\":[\"application/vnd.cyclonedx+json\",\"application/vnd.syft+json\"],\"version\":\"5.25.1\"},\"helperNames\":[\"spring-cloud-bindings\"]},\"build\":false,\"launch\":true,\"cache\":false},\"spring-cloud-bindings\":{\"sha\":\"sha256:9743316173d36245da7b0da03a836616c7acf4dc1e6a5b7cdeba75e818e9d839\",\"data\":{\"cpes\":[\"cpe:2.3:a:vmware:spring_cloud_bindings:1.13.0:*:*:*:*:*:*:*\"],\"deprecation_date\":\"0001-01-01T00:00:00Z\",\"id\":\"spring-cloud-bindings\",\"licenses\":[{\"type\":\"Apache-2.0\",\"uri\":\"https://github.com/spring-cloud/spring-cloud-bindings/blob/main/LICENSE\"}],\"name\":\"Spring Cloud Bindings\",\"purl\":\"pkg:generic/springframework/spring-cloud-bindings@1.13.0\",\"sha256\":\"70a448cd45d1dbc117770f934961cd9577c0c4404d34986824f8f593cae4aada\",\"stacks\":[\"io.buildpacks.stacks.bionic\",\"io.paketo.stacks.tiny\",\"*\"],\"uri\":\"https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-bindings/1.13.0/spring-cloud-bindings-1.13.0.jar\",\"version\":\"1.13.0\"},\"build\":false,\"launch\":true,\"cache\":false},\"web-application-type\":{\"sha\":\"sha256:fcc507beb4ccdbc112909bcf999e90802212e4fc86afa20617a863e89081a6da\",\"data\":{\"files\":\"8c85e98e84dba06e27603b334432e2c76ee6648b08cb5ac056cd03c5434a522f\"},\"build\":false,\"launch\":true,\"cache\":false}}}],\"config\":{\"sha\":\"sha256:17451d2597687c9d3a3b3af621f2e8a62cd65439238e6104d4d92a5e2a7a9405\"},\"launcher\":{\"sha\":\"sha256:b5f2319df366fee6a4cb549088509a9a98935be23e08afa060fa1ef29c1b865b\"},\"process-types\":{\"sha\":\"sha256:1dc94a70dbaa2171fb086500a5d27797f779219b126b0a1eebb9180c2792e80e\"},\"runImage\":{\"topLayer\":\"sha256:cbcef1694167f69836aab07319b9401f4d3e6b4e7224c88488f59930fd5d4322\",\"reference\":\"ebda85cf0d592cfcac7019ce4e6b27b6b6a8ae640115cf0cabd09d47b888bc4f\"},\"stack\":{\"runImage\":{\"image\":\"index.docker.io/paketobuildpacks/run:base-cnb\",\"mirrors\":[\"gcr.io/paketo-buildpacks/run:base-cnb\"]}}}",
+                "io.buildpacks.project.metadata": "{}",
+                "io.buildpacks.stack.description": "ubuntu:bionic with some common dependencies like tzdata and openssl",
+                "io.buildpacks.stack.distro.name": "ubuntu",
+                "io.buildpacks.stack.distro.version": "18.04",
+                "io.buildpacks.stack.homepage": "https://github.com/paketo-buildpacks/bionic-base-stack",
+                "io.buildpacks.stack.id": "io.buildpacks.stacks.bionic",
+                "io.buildpacks.stack.maintainer": "Paketo Buildpacks",
+                "io.buildpacks.stack.metadata": "{}",
+                "io.buildpacks.stack.mixins": "[\"libsemanage-common\",\"procps\",\"fdisk\",\"libseccomp2\",\"locales\",\"lsb-base\",\"dpkg\",\"coreutils\",\"libhogweed4\",\"grep\",\"libgcc1\",\"login\",\"mount\",\"ncurses-bin\",\"findutils\",\"libblkid1\",\"libnettle6\",\"libzstd1\",\"dash\",\"init-system-helpers\",\"libcap-ng0\",\"libffi6\",\"netbase\",\"debconf\",\"debianutils\",\"libsmartcols1\",\"libaudit1\",\"bzip2\",\"libaudit-common\",\"libpam-modules-bin\",\"libsepol1\",\"libselinux1\",\"mawk\",\"bash\",\"libattr1\",\"tar\",\"libmount1\",\"diffutils\",\"libgcrypt20\",\"libudev1\",\"libidn2-0\",\"ncurses-base\",\"zlib1g\",\"gcc-8-base\",\"libdebconfclient0\",\"libgnutls30\",\"base-files\",\"gzip\",\"libncursesw5\",\"passwd\",\"libsemanage1\",\"sed\",\"base-passwd\",\"ca-certificates\",\"libc-bin\",\"libexpat1\",\"libcom-err2\",\"libstdc++6\",\"libuuid1\",\"libgpg-error0\",\"libpam0g\",\"libacl1\",\"util-linux\",\"libp11-kit0\",\"ubuntu-keyring\",\"gpgv\",\"hostname\",\"libfdisk1\",\"tzdata\",\"libpam-modules\",\"bsdutils\",\"libbz2-1.0\",\"liblz4-1\",\"e2fsprogs\",\"libpcre3\",\"libunistring2\",\"sensible-utils\",\"apt\",\"libc6\",\"libprocps6\",\"libapt-pkg5.0\",\"libdb5.3\",\"libext2fs2\",\"libtinfo5\",\"libyaml-0-2\",\"libsystemd0\",\"libtasn1-6\",\"openssl\",\"perl-base\",\"libgmp10\",\"liblzma5\",\"libpam-runtime\",\"libssl1.1\",\"sysvinit-utils\",\"libss2\",\"adduser\",\"libncurses5\"]",
+                "io.buildpacks.stack.released": "2023-05-24T16:39:17Z",
+                "io.paketo.stack.packages": "[{\"name\":\"adduser\",\"version\":\"3.116ubuntu1\",\"arch\":\"all\",\"source\":{\"name\":\"\"},\"summary\":\"add and remove users and groups\"},{\"name\":\"apt\",\"version\":\"1.6.17\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"commandline package manager\"},{\"name\":\"base-files\",\"version\":\"10.1ubuntu2.11\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"Debian base system miscellaneous files\"},{\"name\":\"base-passwd\",\"version\":\"3.5.44\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"Debian base system master password and group files\"},{\"name\":\"bash\",\"version\":\"4.4.18-2ubuntu1.3\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"GNU Bourne Again SHell\"},{\"name\":\"bsdutils\",\"version\":\"1:2.31.1-0.4ubuntu3.7\",\"arch\":\"amd64\",\"source\":{\"name\":\"util-linux\",\"version\":\"2.31.1-0.4ubuntu3.7\",\"upstreamVersion\":\"2.31.1\"},\"summary\":\"basic utilities from 4.4BSD-Lite\"},{\"name\":\"bzip2\",\"version\":\"1.0.6-8.1ubuntu0.2\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"high-quality block-sorting file compressor - utilities\"},{\"name\":\"ca-certificates\",\"version\":\"20230311ubuntu0.18.04.1\",\"arch\":\"all\",\"source\":{\"name\":\"\"},\"summary\":\"Common CA certificates\"},{\"name\":\"coreutils\",\"version\":\"8.28-1ubuntu1\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"GNU core utilities\"},{\"name\":\"dash\",\"version\":\"0.5.8-2.10\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"POSIX-compliant shell\"},{\"name\":\"debconf\",\"version\":\"1.5.66ubuntu1\",\"arch\":\"all\",\"source\":{\"name\":\"\"},\"summary\":\"Debian configuration management system\"},{\"name\":\"debianutils\",\"version\":\"4.8.4\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"Miscellaneous utilities specific to Debian\"},{\"name\":\"diffutils\",\"version\":\"1:3.6-1\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"File comparison utilities\"},{\"name\":\"dpkg\",\"version\":\"1.19.0.5ubuntu2.4\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"Debian package management system\"},{\"name\":\"e2fsprogs\",\"version\":\"1.44.1-1ubuntu1.4\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"ext2/ext3/ext4 file system utilities\"},{\"name\":\"fdisk\",\"version\":\"2.31.1-0.4ubuntu3.7\",\"arch\":\"amd64\",\"source\":{\"name\":\"util-linux\"},\"summary\":\"collection of partitioning utilities\"},{\"name\":\"findutils\",\"version\":\"4.6.0+git+20170828-2\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"utilities for finding files--find, xargs\"},{\"name\":\"gcc-8-base\",\"version\":\"8.4.0-1ubuntu1~18.04\",\"arch\":\"amd64\",\"source\":{\"name\":\"gcc-8\"},\"summary\":\"GCC, the GNU Compiler Collection (base package)\"},{\"name\":\"gpgv\",\"version\":\"2.2.4-1ubuntu1.6\",\"arch\":\"amd64\",\"source\":{\"name\":\"gnupg2\"},\"summary\":\"GNU privacy guard - signature verification tool\"},{\"name\":\"grep\",\"version\":\"3.1-2build1\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"GNU grep, egrep and fgrep\"},{\"name\":\"gzip\",\"version\":\"1.6-5ubuntu1.2\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"GNU compression utilities\"},{\"name\":\"hostname\",\"version\":\"3.20\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"utility to set/show the host name or domain name\"},{\"name\":\"init-system-helpers\",\"version\":\"1.51\",\"arch\":\"all\",\"source\":{\"name\":\"\"},\"summary\":\"helper tools for all init systems\"},{\"name\":\"libacl1\",\"version\":\"2.2.52-3build1\",\"arch\":\"amd64\",\"source\":{\"name\":\"acl\"},\"summary\":\"Access control list shared library\"},{\"name\":\"libapt-pkg5.0\",\"version\":\"1.6.17\",\"arch\":\"amd64\",\"source\":{\"name\":\"apt\"},\"summary\":\"package management runtime library\"},{\"name\":\"libattr1\",\"version\":\"1:2.4.47-2build1\",\"arch\":\"amd64\",\"source\":{\"name\":\"attr\"},\"summary\":\"Extended attribute shared library\"},{\"name\":\"libaudit-common\",\"version\":\"1:2.8.2-1ubuntu1.1\",\"arch\":\"all\",\"source\":{\"name\":\"audit\"},\"summary\":\"Dynamic library for security auditing - common files\"},{\"name\":\"libaudit1\",\"version\":\"1:2.8.2-1ubuntu1.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"audit\"},\"summary\":\"Dynamic library for security auditing\"},{\"name\":\"libblkid1\",\"version\":\"2.31.1-0.4ubuntu3.7\",\"arch\":\"amd64\",\"source\":{\"name\":\"util-linux\"},\"summary\":\"block device ID library\"},{\"name\":\"libbz2-1.0\",\"version\":\"1.0.6-8.1ubuntu0.2\",\"arch\":\"amd64\",\"source\":{\"name\":\"bzip2\"},\"summary\":\"high-quality block-sorting file compressor library - runtime\"},{\"name\":\"libc-bin\",\"version\":\"2.27-3ubuntu1.6\",\"arch\":\"amd64\",\"source\":{\"name\":\"glibc\"},\"summary\":\"GNU C Library: Binaries\"},{\"name\":\"libc6\",\"version\":\"2.27-3ubuntu1.6\",\"arch\":\"amd64\",\"source\":{\"name\":\"glibc\"},\"summary\":\"GNU C Library: Shared libraries\"},{\"name\":\"libcap-ng0\",\"version\":\"0.7.7-3.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"libcap-ng\"},\"summary\":\"An alternate POSIX capabilities library\"},{\"name\":\"libcom-err2\",\"version\":\"1.44.1-1ubuntu1.4\",\"arch\":\"amd64\",\"source\":{\"name\":\"e2fsprogs\"},\"summary\":\"common error description library\"},{\"name\":\"libdb5.3\",\"version\":\"5.3.28-13.1ubuntu1.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"db5.3\"},\"summary\":\"Berkeley v5.3 Database Libraries [runtime]\"},{\"name\":\"libdebconfclient0\",\"version\":\"0.213ubuntu1\",\"arch\":\"amd64\",\"source\":{\"name\":\"cdebconf\"},\"summary\":\"Debian Configuration Management System (C-implementation library)\"},{\"name\":\"libexpat1\",\"version\":\"2.2.5-3ubuntu0.9\",\"arch\":\"amd64\",\"source\":{\"name\":\"expat\"},\"summary\":\"XML parsing C library - runtime library\"},{\"name\":\"libext2fs2\",\"version\":\"1.44.1-1ubuntu1.4\",\"arch\":\"amd64\",\"source\":{\"name\":\"e2fsprogs\"},\"summary\":\"ext2/ext3/ext4 file system libraries\"},{\"name\":\"libfdisk1\",\"version\":\"2.31.1-0.4ubuntu3.7\",\"arch\":\"amd64\",\"source\":{\"name\":\"util-linux\"},\"summary\":\"fdisk partitioning library\"},{\"name\":\"libffi6\",\"version\":\"3.2.1-8\",\"arch\":\"amd64\",\"source\":{\"name\":\"libffi\"},\"summary\":\"Foreign Function Interface library runtime\"},{\"name\":\"libgcc1\",\"version\":\"1:8.4.0-1ubuntu1~18.04\",\"arch\":\"amd64\",\"source\":{\"name\":\"gcc-8\",\"version\":\"8.4.0-1ubuntu1~18.04\",\"upstreamVersion\":\"8.4.0\"},\"summary\":\"GCC support library\"},{\"name\":\"libgcrypt20\",\"version\":\"1.8.1-4ubuntu1.3\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"LGPL Crypto library - runtime library\"},{\"name\":\"libgmp10\",\"version\":\"2:6.1.2+dfsg-2ubuntu0.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"gmp\"},\"summary\":\"Multiprecision arithmetic library\"},{\"name\":\"libgnutls30\",\"version\":\"3.5.18-1ubuntu1.6\",\"arch\":\"amd64\",\"source\":{\"name\":\"gnutls28\"},\"summary\":\"GNU TLS library - main runtime library\"},{\"name\":\"libgpg-error0\",\"version\":\"1.27-6\",\"arch\":\"amd64\",\"source\":{\"name\":\"libgpg-error\"},\"summary\":\"library for common error values and messages in GnuPG components\"},{\"name\":\"libhogweed4\",\"version\":\"3.4.1-0ubuntu0.18.04.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"nettle\"},\"summary\":\"low level cryptographic library (public-key cryptos)\"},{\"name\":\"libidn2-0\",\"version\":\"2.0.4-1.1ubuntu0.2\",\"arch\":\"amd64\",\"source\":{\"name\":\"libidn2\"},\"summary\":\"Internationalized domain names (IDNA2008/TR46) library\"},{\"name\":\"liblz4-1\",\"version\":\"0.0~r131-2ubuntu3.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"lz4\"},\"summary\":\"Fast LZ compression algorithm library - runtime\"},{\"name\":\"liblzma5\",\"version\":\"5.2.2-1.3ubuntu0.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"xz-utils\"},\"summary\":\"XZ-format compression library\"},{\"name\":\"libmount1\",\"version\":\"2.31.1-0.4ubuntu3.7\",\"arch\":\"amd64\",\"source\":{\"name\":\"util-linux\"},\"summary\":\"device mounting library\"},{\"name\":\"libncurses5\",\"version\":\"6.1-1ubuntu1.18.04.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"ncurses\"},\"summary\":\"shared libraries for terminal handling\"},{\"name\":\"libncursesw5\",\"version\":\"6.1-1ubuntu1.18.04.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"ncurses\"},\"summary\":\"shared libraries for terminal handling (wide character support)\"},{\"name\":\"libnettle6\",\"version\":\"3.4.1-0ubuntu0.18.04.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"nettle\"},\"summary\":\"low level cryptographic library (symmetric and one-way cryptos)\"},{\"name\":\"libp11-kit0\",\"version\":\"0.23.9-2ubuntu0.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"p11-kit\"},\"summary\":\"library for loading and coordinating access to PKCS#11 modules - runtime\"},{\"name\":\"libpam-modules\",\"version\":\"1.1.8-3.6ubuntu2.18.04.6\",\"arch\":\"amd64\",\"source\":{\"name\":\"pam\"},\"summary\":\"Pluggable Authentication Modules for PAM\"},{\"name\":\"libpam-modules-bin\",\"version\":\"1.1.8-3.6ubuntu2.18.04.6\",\"arch\":\"amd64\",\"source\":{\"name\":\"pam\"},\"summary\":\"Pluggable Authentication Modules for PAM - helper binaries\"},{\"name\":\"libpam-runtime\",\"version\":\"1.1.8-3.6ubuntu2.18.04.6\",\"arch\":\"all\",\"source\":{\"name\":\"pam\"},\"summary\":\"Runtime support for the PAM library\"},{\"name\":\"libpam0g\",\"version\":\"1.1.8-3.6ubuntu2.18.04.6\",\"arch\":\"amd64\",\"source\":{\"name\":\"pam\"},\"summary\":\"Pluggable Authentication Modules library\"},{\"name\":\"libpcre3\",\"version\":\"2:8.39-9ubuntu0.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"pcre3\"},\"summary\":\"Old Perl 5 Compatible Regular Expression Library - runtime files\"},{\"name\":\"libprocps6\",\"version\":\"2:3.3.12-3ubuntu1.2\",\"arch\":\"amd64\",\"source\":{\"name\":\"procps\"},\"summary\":\"library for accessing process information from /proc\"},{\"name\":\"libseccomp2\",\"version\":\"2.5.1-1ubuntu1~18.04.2\",\"arch\":\"amd64\",\"source\":{\"name\":\"libseccomp\"},\"summary\":\"high level interface to Linux seccomp filter\"},{\"name\":\"libselinux1\",\"version\":\"2.7-2build2\",\"arch\":\"amd64\",\"source\":{\"name\":\"libselinux\"},\"summary\":\"SELinux runtime shared libraries\"},{\"name\":\"libsemanage-common\",\"version\":\"2.7-2build2\",\"arch\":\"all\",\"source\":{\"name\":\"libsemanage\"},\"summary\":\"Common files for SELinux policy management libraries\"},{\"name\":\"libsemanage1\",\"version\":\"2.7-2build2\",\"arch\":\"amd64\",\"source\":{\"name\":\"libsemanage\"},\"summary\":\"SELinux policy management library\"},{\"name\":\"libsepol1\",\"version\":\"2.7-1ubuntu0.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"libsepol\"},\"summary\":\"SELinux library for manipulating binary security policies\"},{\"name\":\"libsmartcols1\",\"version\":\"2.31.1-0.4ubuntu3.7\",\"arch\":\"amd64\",\"source\":{\"name\":\"util-linux\"},\"summary\":\"smart column output alignment library\"},{\"name\":\"libss2\",\"version\":\"1.44.1-1ubuntu1.4\",\"arch\":\"amd64\",\"source\":{\"name\":\"e2fsprogs\"},\"summary\":\"command-line interface parsing library\"},{\"name\":\"libssl1.1\",\"version\":\"1.1.1-1ubuntu2.1~18.04.22\",\"arch\":\"amd64\",\"source\":{\"name\":\"openssl\"},\"summary\":\"Secure Sockets Layer toolkit - shared libraries\"},{\"name\":\"libstdc++6\",\"version\":\"8.4.0-1ubuntu1~18.04\",\"arch\":\"amd64\",\"source\":{\"name\":\"gcc-8\"},\"summary\":\"GNU Standard C++ Library v3\"},{\"name\":\"libsystemd0\",\"version\":\"237-3ubuntu10.57\",\"arch\":\"amd64\",\"source\":{\"name\":\"systemd\"},\"summary\":\"systemd utility library\"},{\"name\":\"libtasn1-6\",\"version\":\"4.13-2\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"Manage ASN.1 structures (runtime)\"},{\"name\":\"libtinfo5\",\"version\":\"6.1-1ubuntu1.18.04.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"ncurses\"},\"summary\":\"shared low-level terminfo library for terminal handling\"},{\"name\":\"libudev1\",\"version\":\"237-3ubuntu10.57\",\"arch\":\"amd64\",\"source\":{\"name\":\"systemd\"},\"summary\":\"libudev shared library\"},{\"name\":\"libunistring2\",\"version\":\"0.9.9-0ubuntu2\",\"arch\":\"amd64\",\"source\":{\"name\":\"libunistring\"},\"summary\":\"Unicode string library for C\"},{\"name\":\"libuuid1\",\"version\":\"2.31.1-0.4ubuntu3.7\",\"arch\":\"amd64\",\"source\":{\"name\":\"util-linux\"},\"summary\":\"Universally Unique ID library\"},{\"name\":\"libyaml-0-2\",\"version\":\"0.1.7-2ubuntu3\",\"arch\":\"amd64\",\"source\":{\"name\":\"libyaml\"},\"summary\":\"Fast YAML 1.1 parser and emitter library\"},{\"name\":\"libzstd1\",\"version\":\"1.3.3+dfsg-2ubuntu1.2\",\"arch\":\"amd64\",\"source\":{\"name\":\"libzstd\"},\"summary\":\"fast lossless compression algorithm\"},{\"name\":\"locales\",\"version\":\"2.27-3ubuntu1.6\",\"arch\":\"all\",\"source\":{\"name\":\"glibc\"},\"summary\":\"GNU C Library: National Language (locale) data [support]\"},{\"name\":\"login\",\"version\":\"1:4.5-1ubuntu2.5\",\"arch\":\"amd64\",\"source\":{\"name\":\"shadow\"},\"summary\":\"system login tools\"},{\"name\":\"lsb-base\",\"version\":\"9.20170808ubuntu1\",\"arch\":\"all\",\"source\":{\"name\":\"lsb\"},\"summary\":\"Linux Standard Base init script functionality\"},{\"name\":\"mawk\",\"version\":\"1.3.3-17ubuntu3\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"a pattern scanning and text processing language\"},{\"name\":\"mount\",\"version\":\"2.31.1-0.4ubuntu3.7\",\"arch\":\"amd64\",\"source\":{\"name\":\"util-linux\"},\"summary\":\"tools for mounting and manipulating filesystems\"},{\"name\":\"ncurses-base\",\"version\":\"6.1-1ubuntu1.18.04.1\",\"arch\":\"all\",\"source\":{\"name\":\"ncurses\"},\"summary\":\"basic terminal type definitions\"},{\"name\":\"ncurses-bin\",\"version\":\"6.1-1ubuntu1.18.04.1\",\"arch\":\"amd64\",\"source\":{\"name\":\"ncurses\"},\"summary\":\"terminal-related programs and man pages\"},{\"name\":\"netbase\",\"version\":\"5.4\",\"arch\":\"all\",\"source\":{\"name\":\"\"},\"summary\":\"Basic TCP/IP networking system\"},{\"name\":\"openssl\",\"version\":\"1.1.1-1ubuntu2.1~18.04.22\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"Secure Sockets Layer toolkit - cryptographic utility\"},{\"name\":\"passwd\",\"version\":\"1:4.5-1ubuntu2.5\",\"arch\":\"amd64\",\"source\":{\"name\":\"shadow\"},\"summary\":\"change and administer password and group data\"},{\"name\":\"perl-base\",\"version\":\"5.26.1-6ubuntu0.6\",\"arch\":\"amd64\",\"source\":{\"name\":\"perl\"},\"summary\":\"minimal Perl system\"},{\"name\":\"procps\",\"version\":\"2:3.3.12-3ubuntu1.2\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"/proc file system utilities\"},{\"name\":\"sed\",\"version\":\"4.4-2\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"GNU stream editor for filtering/transforming text\"},{\"name\":\"sensible-utils\",\"version\":\"0.0.12\",\"arch\":\"all\",\"source\":{\"name\":\"\"},\"summary\":\"Utilities for sensible alternative selection\"},{\"name\":\"sysvinit-utils\",\"version\":\"2.88dsf-59.10ubuntu1\",\"arch\":\"amd64\",\"source\":{\"name\":\"sysvinit\"},\"summary\":\"System-V-like utilities\"},{\"name\":\"tar\",\"version\":\"1.29b-2ubuntu0.4\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"GNU version of the tar archiving utility\"},{\"name\":\"tzdata\",\"version\":\"2023c-0ubuntu0.18.04\",\"arch\":\"all\",\"source\":{\"name\":\"\"},\"summary\":\"time zone and daylight-saving time data\"},{\"name\":\"ubuntu-keyring\",\"version\":\"2018.09.18.1~18.04.2\",\"arch\":\"all\",\"source\":{\"name\":\"\"},\"summary\":\"GnuPG keys of the Ubuntu archive\"},{\"name\":\"util-linux\",\"version\":\"2.31.1-0.4ubuntu3.7\",\"arch\":\"amd64\",\"source\":{\"name\":\"\"},\"summary\":\"miscellaneous system utilities\"},{\"name\":\"zlib1g\",\"version\":\"1:1.2.11.dfsg-0ubuntu2.2\",\"arch\":\"amd64\",\"source\":{\"name\":\"zlib\"},\"summary\":\"compression library - runtime\"}]",
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.title": "catalog-service-03",
+                "org.opencontainers.image.version": "0.0.1-SNAPSHOT",
+                "org.springframework.boot.version": "3.0.5"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 276202958,
+        "VirtualSize": 276202958,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/cd8db2bef6318592c37553e9bc0c82017be7adbd9bf6d1cf35714145ad80f549/diff:/var/lib/docker/overlay2/61dcdc3395076140feb765ea0a669a4df2fc1e693e46f4d13011a1557f47de6f/diff:/var/lib/docker/overlay2/6c22742b9f5bb6eb20d17ace903e2ceafa02d24fb5315950e43ac722578c2dc6/diff:/var/lib/docker/overlay2/0ce9358bf4c251eaeb7af196ec26ff189498bb906fc8266cb45d52c27709ed37/diff:/var/lib/docker/overlay2/97a6ec2b7f9186fbf38934d0ca195d27cc4638be78f2b873fdaae4b1ff075563/diff:/var/lib/docker/overlay2/551bce179a8414bc9478234aad4ebcf35b3e48d77b28d79f6c568fe22ee47c90/diff:/var/lib/docker/overlay2/56b03849b5de94b1b981d2f8c5257f7806bf56b320f7fae051f3d0b215f5e457/diff:/var/lib/docker/overlay2/1cec3ca26a807195772dccb8c87373d358a0680bebd092bd3805d211c0dfb314/diff:/var/lib/docker/overlay2/cdb79b33e560c6be0adf9508fb794277e48c23f76530852469f4c27ed3012eed/diff:/var/lib/docker/overlay2/f764f429d5e296f840bcd064926e8325912a3cb16e55b35cf30cd25556d448a9/diff:/var/lib/docker/overlay2/ce2ca5934c6416a68d4470c2fca6a825824ce802687f7ccbe56980583b796f23/diff:/var/lib/docker/overlay2/d99d5561a6780dec129b0174f328f04bb557614b48f6a9452d6fc6946e9cccfb/diff:/var/lib/docker/overlay2/e8ecfc6a2c15c5a2f526123292aca56ec7bc3eef7eeb77e0b0f9cd662a57c3e3/diff:/var/lib/docker/overlay2/a5430d38a64624462ddefdf937f67403da6f69f1bdfde936d81ea0cd37efb277/diff:/var/lib/docker/overlay2/305637402c05e59288703a521de07b77e46d4d62a6879a558c74e9b536bce04d/diff:/var/lib/docker/overlay2/14569390667f33bd1d61b74aae919d4547a11c4823f7799dcff9d971b39680ed/diff:/var/lib/docker/overlay2/351d12fbcf54febb8873e3926152ed40b9bb3d6abcbd75aecb129fdea75432c1/diff:/var/lib/docker/overlay2/e191a1be9ba283e32f8e29b48ac9be30cc5aae39810be9ce0bcf624af035b17d/diff:/var/lib/docker/overlay2/50aa52fed574592d6c9a66e203455bd52e9b7fb1191d64538cd8bd1ff032cc18/diff:/var/lib/docker/overlay2/b99b6b1117a548132a869a28ec9826d5a073f633e758440ebe1c988d52f3d8e2/diff:/var/lib/docker/overlay2/ef0c5779e38995c80a9d15608b4f5fa37ff7f6f67b64ca255ea5064573d7c414/diff:/var/lib/docker/overlay2/cf722559f10ee4588fd44856a787592396d4a63c237b370da126d4b1c4bb0367/diff:/var/lib/docker/overlay2/8cb0d91bf887b2ab1d191e68d021adefd7727ef5a129bda78ade5f88220e4e2e/diff",
+                "MergedDir": "/var/lib/docker/overlay2/bc45bd206b0f01e782c8adca428c5f5fad723137b099e6dc91eca8a2524f7c10/merged",
+                "UpperDir": "/var/lib/docker/overlay2/bc45bd206b0f01e782c8adca428c5f5fad723137b099e6dc91eca8a2524f7c10/diff",
+                "WorkDir": "/var/lib/docker/overlay2/bc45bd206b0f01e782c8adca428c5f5fad723137b099e6dc91eca8a2524f7c10/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:09d5e92ce69e5b398823f217f748114698689cc296331870e9ddac8bdf5e9b65",
+                "sha256:6902594049d63026414cdab677152d27bf6635388b1a33829095a4e1b7dac93b",
+                "sha256:ee014b4f9231fbcd1445ede8912b65f165a0027739114eb8bdaa6b03b4797242",
+                "sha256:763f28d6f6cdec40c0faf6bf001b8cf6a4ae060756511b95aa5f9e5512e714ee",
+                "sha256:f8d3ae3f2ec273c6011a05706c732021b98011de71e9382398d30e957e6be177",
+                "sha256:b2589f0d66fda6cf854509f24e085b2b4c5eb5fee172f3aa146284d14ef51bbd",
+                "sha256:cbcef1694167f69836aab07319b9401f4d3e6b4e7224c88488f59930fd5d4322",
+                "sha256:6b2e6eafd42fbcd8fb654f4322bb625e07c2247ea90625b1c4d693b8a0b0d0e8",
+                "sha256:53657920187bd2fbdf13c746371d60e909cce61357e18b88f868d5a92e358b20",
+                "sha256:ec0381c8f32136ad9564b114b2271d1181e0c181957acb6707e6ff4713a7a89d",
+                "sha256:f245ab22134ec9da25aafafc3571b265fe89b451f7f8507509a4b5186a2b18f4",
+                "sha256:7fbc97c38fad01ae2b8189c8d9a0a0149932192accc4ad253b0f8186d0793e9a",
+                "sha256:1692ecc99a7b10eb07aecc002026fb3d18e2f30c0c29e008bd4e8e17ae12e3f5",
+                "sha256:9743316173d36245da7b0da03a836616c7acf4dc1e6a5b7cdeba75e818e9d839",
+                "sha256:fcc507beb4ccdbc112909bcf999e90802212e4fc86afa20617a863e89081a6da",
+                "sha256:0362a09a9aaa5bf3b4e553c6b9104332804c1ac2aefaddb158ae4e0c1be4c9fc",
+                "sha256:844bbbaf08fd9dc4fe1cc64338666a844f31bf92821a45bde59cd7b654a19988",
+                "sha256:0345504805f0312cf76cb4aab197e263a98d1fbec821459bfe0a1e072137f21c",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:5a7ad76129855fd115ae4f78c7821f658eb927fabfb53d01c60e88cb0a11f576",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:b5f2319df366fee6a4cb549088509a9a98935be23e08afa060fa1ef29c1b865b",
+                "sha256:17451d2597687c9d3a3b3af621f2e8a62cd65439238e6104d4d92a5e2a7a9405",
+                "sha256:1dc94a70dbaa2171fb086500a5d27797f779219b126b0a1eebb9180c2792e80e"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2023-05-28T22:15:03.217760013+02:00"
+        }
+    }
+]
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ docker compose up -d
+[+] Building 0.0s (0/0)
+[+] Running 2/2
+ ✔ Network catalog-service-03_default  Created                                                                                                                                                                                     0.1s
+ ✔ Container catalog-service           Started                                                                                                                                                                                     0.3s
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ curl http://localhost:8080/
+<h1>Greetings cnb,</h1><h2>welcome to the book catalog</h2><h2>The current time is 2023-05-28T21:07:04.458411912</h2><p>Running with Java 17.0.7, null of BellSoft at /layers/paketo-buildpacks_bellsoft-liberica/jre.</p><p>OS/Arch/version: Linux/amd64/5.19.0-42-generic</p>willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ docker ps
+CONTAINER ID   IMAGE                               COMMAND              CREATED         STATUS         PORTS                                       NAMES
+b200cd5ba907   catalog-service-03:0.0.1-SNAPSHOT   "/cnb/process/web"   2 minutes ago   Up 2 minutes   0.0.0.0:8080->9001/tcp, :::8080->9001/tcp   catalog-service
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ docker compose down
+[+] Running 2/2
+ ✔ Container catalog-service           Removed                                                                                                                                                                                     0.4s
+ ✔ Network catalog-service-03_default  Removed                                                                                                                                                                                     0.4s
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ docker image ls
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+paketobuildpacks/run              base-cnb         ebda85cf0d59   4 days ago      88.2MB
+paketobuildpacks/run              <none>           9cad50d3c33d   6 weeks ago     90.6MB
+confluentinc/ksqldb-examples      7.2.1            ae252c2780c4   10 months ago   815MB
+confluentinc/cp-ksqldb-server     7.2.1            140d2ac32177   10 months ago   1.36GB
+confluentinc/cp-ksqldb-cli        7.2.1            287039530a46   10 months ago   857MB
+confluentinc/cp-schema-registry   7.2.1            afaac043dcc1   10 months ago   1.86GB
+confluentinc/cp-kafka             7.2.1            d893473a6510   10 months ago   782MB
+confluentinc/cp-kafka             latest           d893473a6510   10 months ago   782MB
+confluentinc/cp-zookeeper         7.2.1            3f28db6a433d   10 months ago   782MB
+confluentinc/cp-zookeeper         latest           3f28db6a433d   10 months ago   782MB
+confluentinc/cp-kafka-rest        7.2.1            784b8061ad0c   10 months ago   1.76GB
+cnfldemos/kafka-connect-datagen   0.5.3-7.1.0      de0e2396b904   13 months ago   1.46GB
+zookeeper                         3.6.2            a72350516291   2 years ago     268MB
+bsucaciu/kafka                    2.6.0            cbe9ab39d5fc   2 years ago     642MB
+bsucaciu/kerberos-producer        1.0.0            eb27c056cc20   2 years ago     354MB
+bsucaciu/kerberos-consumer        1.0.0            5486c13e058b   2 years ago     354MB
+bsucaciu/kerberos                 krb5             ce76df4cb4a8   2 years ago     61MB
+catalog-service-03                0.0.1-SNAPSHOT   6b4c778c3417   43 years ago    276MB
+paketobuildpacks/builder          <none>           9400264deb14   43 years ago    1.2GB
+<none>                            <none>           82b099c1beb7   43 years ago    278MB
+catalog-service                   0.0.1-SNAPSHOT   60795747b2e6   43 years ago    274MB
+paketobuildpacks/builder          base             71badb65e5f6   43 years ago    1.41GB
+
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ docker image prune
+WARNING! This will remove all dangling images.
+Are you sure you want to continue? [y/N] y
+Deleted Images:
+deleted: sha256:82b099c1beb77dce30b4d1bad3dcbdf59b10724ddc0af279d4cb19e86a2ec162
+deleted: sha256:d5298bf6db36e502f61c3e0a8bf98a5abcaa31175168275ff80c488eede5463b
+deleted: sha256:db3bcb76741ad9307d30a81e7d70a1d8d62316381ce51538ec1208806d896b28
+deleted: sha256:0604903942298d19eca417397f50eb8fa83f90441bca8cef774a49b1f61501e9
+deleted: sha256:1c26d7d477937b5ca83140b1e31405b14d4f872cc1e9ed94ebb52bfedc35cc09
+deleted: sha256:47da723dafdf482db552aa879988f476bad7020ad82337126e4abff16cb2d022
+deleted: sha256:49a74cae707b8035dde1232f74928da0e1cf5eab26a9c20e11910bfdd1000a2b
+deleted: sha256:de2632f232f1e83f542af7e3ea041b2f517d63c05e9ceea15e9dba48a69fe57e
+deleted: sha256:5b8b3d69864ba3cf0d1f4e55a8132ccab7d3a687646d382bf1832dbc4eba3068
+deleted: sha256:c50eed05f0271819d1ec5d69bfa47e2ab7c0490aa986e98428fe10ad9d002bc7
+deleted: sha256:70a13cfa3c06322b9449ce3510e8c27be8056ddf63d51ebca0f493eec1674e06
+deleted: sha256:9c28b6b90bd9c8ba52aef5fa9e30d1e70dc7f4391ab3e8b29ea453a510542ed7
+deleted: sha256:7a4865d23a2f6926f53e75e58a990f9ae7e4eeea6ae0d8a64af1192528825c8e
+deleted: sha256:6f133dc17acd9e89fa92fda69bf891bc239e97e6fbbf32d7ce9f450ea1acee07
+deleted: sha256:553988aa3dc2575ab6acf3751dbaa66e86e6209f08f8641f9ac4ef22d9b70737
+deleted: sha256:a998fb56d5705956a5b698afbef78c64ef8042822575a533c21af50c6b720c8b
+deleted: sha256:c2236d25410184bb47adcf939647ffa59bbf361c254c17ab11ac5ad4cc697b22
+deleted: sha256:c57408240282abcc0fe49cc86d1dca6d600a1f05494b23dc3dda49bc9015c994
+untagged: paketobuildpacks/run@sha256:41443690a2dc36118112db2c4790dc2bc8189926dae9ff91992b78675d0cac39
+deleted: sha256:9cad50d3c33dc0d039519fca03ddfa7e4dcb177b94744a5a5b71dc618c729427
+deleted: sha256:ce32e3d041cdfc9a4868b206f848bd806e3e579ab2e465f6217d76611016991b
+deleted: sha256:5348b3beb2d80493c93c7d7ed385e7096929d63465287961e1e11e0b92eb532c
+deleted: sha256:3ece48dd60a664bd60a4a6e330a5797fc13b6ec0d611a9eb6e5c2f661953ecb5
+deleted: sha256:0d72758816acdcd4423baf6ad8ab2d727e38441f016202b2c3b259c489748b01
+deleted: sha256:5e4dc4a75e1ed41397ec0ccec72bb581d5ad55b865f8d67161844045fa35f9f5
+untagged: paketobuildpacks/builder@sha256:6a163952ac998e00f6049926b5bb2c31d2df3d103c4c7485bc6575be43f42803
+deleted: sha256:9400264deb14c48e435be1c52a4dca8588d5137b95bf42987344fe842d83cf31
+deleted: sha256:704a3d8a3e3121c55b2240091e2150263d20e7d2f9e71f7b3e9bae6dd15aaf8e
+deleted: sha256:869663b41727a1209c6da266f40a3d2f5b737fa8dd8eb49f7af6c4483f9df285
+deleted: sha256:eb49dda7ec664f0122ffe7c03e92db4755a9e69f495d320e74149fe624f6eb3d
+deleted: sha256:ed35a50f7f2b4a054524ca999c3f84b95b5d33148e0a77c2d9ce0af1521486c5
+deleted: sha256:0ab276339ab30afd31915f137ec314a62aef989af3a29de95973c22f5a83bb2b
+deleted: sha256:f745006d43be8671d6a6e5db3ef08bd9235da102f48bc2861cc384f2bf05842e
+deleted: sha256:94ca820076edbdd7ded1f0dc3cf57dbb3a14ece311ad216daaed5e5d1e36c2fe
+deleted: sha256:d0261df79fb83fd6db2713c84716c3efc1fd1ffe39ec4951fa9b8b69b4994bc5
+deleted: sha256:ab0187165bbca5365fba237c75ad3f1650782ed88466acd2e31d07f46f812637
+deleted: sha256:c9e594f335d41cfafa04e7fb10b882f1c97fc3bd8fd1aa7543d4a4dd77b86341
+deleted: sha256:4361ee94b9d3485b89bc3db5c4e861d4a5fca2ba337c9c2a0dab8d5984c98501
+deleted: sha256:b097014a77ad4de69c253f40c070699e84670b86c7fcf7be9e3497807caf2106
+deleted: sha256:ab67c44d58e438803c5acf2722b72eacb94ea95e4ac703ef29adaaaf7ccc1561
+deleted: sha256:ac1b2c8f811bed2392c9b3bb0a5cace8ebb25fd8b281398f0d4b90faee97f8bf
+deleted: sha256:5e7d32c45e47d9308a8080edda6eb5057cfbd41f77d13ec800e2f29f731dd017
+deleted: sha256:eec549511b0f57741782dcf0c1be1cbd1ca70b5725219285aff7765aa965e6ed
+deleted: sha256:f9b882e93d7b51f56ebddaa6ae92069d6028d484e474b245f2aee736e3585b9d
+deleted: sha256:b07ff18067c8cd15d9711bb253ca855d6d0ac92772f249d4e4a023dc4232d865
+deleted: sha256:19144d3fbaa0fa4f5511957f2deb01ab07ae38b3677048f9a351be318fb20711
+deleted: sha256:fc0c675f81444dadc7108025d2b411f79abf7710b7bca96c6d06f50292290e12
+deleted: sha256:e62b3b410c9b1219e9dfeebb8c0dfd461625d192a78e65f6c4ffd6ed95759e50
+deleted: sha256:ffd14b84fab85fb06fbceca2fd6b1f8152806bbb863f360c0b6f23b65691d537
+deleted: sha256:bfd352ab7488448c86ec30b03d379e3b5a7942c8a85b2587063211780d71b3d8
+deleted: sha256:0964513d8ecd1c6f121ef0381adfce954c13b93c599292076d495e5cbe0396c8
+deleted: sha256:13ac5dfe30a79eee80420b86a8da06707e947faaaa687b874df3f71287b1af6e
+deleted: sha256:082beb2db8c83095b768a6b52e1f1d3f5bab5b6e8277ad6fb80da0f4a1c049fb
+deleted: sha256:fdb195540bb5ba4b9650ffbbf918971fc0cd073b22fdeed71b0a72ab4a9806c7
+deleted: sha256:8c056977c5dc6eaed7797bbd5989cee72cdb5b88687ec06b80235b9a0df5f98e
+deleted: sha256:11a75df9c43823eb4f1216c15f883b105a975a0198fbc5f01ed88d62dcaa3d43
+deleted: sha256:2adaa6c866ad47268945271a33e5942313728cb8905a69777cc1b92aef4dcaf5
+deleted: sha256:04bfcfc4b43799e07c299d6085bdc3cd3953d1502765cbf14edc65e78a28b3a6
+deleted: sha256:4d86cc10c00bd3598ff66e78737bc0d446321f99dcc7381574c1dc25ff8a5fd6
+deleted: sha256:f359def7eb334d43cb7612798faabd5c635f6d286ae3a95e27b90c7fb9afcaa6
+deleted: sha256:bc14643bf48fc4e4ca04a44b00c4010e42f8f65638fc40eb9e50ecc07f152a8c
+deleted: sha256:6586b4dc5ba58fb7f894e5aabc17bcce81e232e006702e2d918cc41e0e048ad7
+deleted: sha256:323627f90bfe4293761f96e661a875f7d67af39713def4dd8ed56e06fdf3feeb
+deleted: sha256:908be90bc8ca686ce19a4cf90966c321e883d7c7b6cd4bf4e2d6545378edd85e
+deleted: sha256:a860392c6394847c63a277845fba5d97fc30a0915a861be00d8598b7b737cc0c
+deleted: sha256:2b9eb0939862dcfd9763dca0d6df4f1b098c169700ee34bf95eb54f5e4116b06
+deleted: sha256:9f688e51c0b03edb0b561febfbf8923b9ff85be303fd863b9fbe14798cfc9fc0
+deleted: sha256:04750162d663b216e8e38fd5631821efbd89b35cc764cbbbf247af7b5b907ac6
+deleted: sha256:072d999773184a18f2a1f8e1bba117b07c5ff310400d5693ae0ff262edf8e81e
+deleted: sha256:89ee702419778908bb6d296df8ff76e97a49bc998beea1dbf48d5e427cd87ebc
+deleted: sha256:5f3a8a7d3ef7c9c66d71769f74ea5b8b4ed2cdbc720571f64078423174eecaa2
+deleted: sha256:5b6c0729c1af5edb5e79c75282f7fdc2c276357fc2500b65c5e2eaf394c09a7c
+deleted: sha256:bbc471c9a0587fe9e0771f72cd8389cc06582b1434551dc408e33d93a89dbc08
+deleted: sha256:f1dd7453b24f6bb02e159ea6e5b455c216a82b6eab7401fc2c6ef6f16c3a0eef
+deleted: sha256:13c49913d6c4749292dc894c82f290fb14a937885b296a2ceeecd09da79579bb
+deleted: sha256:64fea2a53feca20e10c01878d61cd0aa5902144d8226eb9e4536e0125f15d1d6
+deleted: sha256:e9a06a2e68252f69c1786f02de164f65609af9c4b807ebeaefd41608e2bf4d7f
+deleted: sha256:cce4573098e25bbbc5ace08ed9df8bcfd898dc56d36a8983165cb38b2582c3e5
+deleted: sha256:7128400048534a58cf83bb5c328eb952970fb93fc10d4876c7f3181ca003a4ff
+deleted: sha256:38162fea4d7a70ffae18d39fd20b9c19bcaef3bfcaf984b300fd6d94f09884c4
+deleted: sha256:e40503374210d7b0410314c8aaec5fb5cd9928975f18bf3203b82e0b18d1d637
+deleted: sha256:f0bdf54eda3146c85cd19c17a4bf040d6eb8bf34826956a76d6cc1d2cc513010
+deleted: sha256:687adcbc7f25533036b669e72650b7a3394b3862a61a715b995fcd7e3bd7aa59
+deleted: sha256:960f7b11182c9506d0f5832dfaa3dfe08c1bc4aa364cdccf156667a279fd5ebf
+deleted: sha256:94f20d9327662a3baa6fb43e78312ac22056b83680a5f526bd57a8444e973b7b
+deleted: sha256:146b0a9845831b147a657b2f28b03448111379d8622e854ccf48fda183c1a40c
+deleted: sha256:a3c37e2bbd7df98caa24a9cecefddf2411413d356ff53402f401ead87f65f824
+deleted: sha256:28fdf4bbb58ed53ec66371ca014176db6d0750cad6a3b9181810fc075ec0dba2
+deleted: sha256:9833647d65b8e90113fb1daf844d0493e43fda4905c66391c52830c90a2e2686
+deleted: sha256:4cdbe438687b8dba8aabb3236f4ac6f5f3d1432cf6a153666dbc3a89eb72c7e7
+deleted: sha256:268c414786c629c7bffea6ae77a087a406780fd2d0fecd874a12b1353ff10cac
+deleted: sha256:def268ad071de8410a1e7940c85b3dda01e97669176d775b437bd36194370a8f
+deleted: sha256:0ff15ee5d00a349a99cfd398808378e2094304a4baf0a6ccb953d63b47bce3dc
+deleted: sha256:a4e75d5de736a1ffb417eb14d40e0da1292ca4d3ba7f2184b6b0921e5aaab13a
+deleted: sha256:08ae75f13d5841c17c5baa2163c69d4ad7c93a98734afdb20f5043f0aca6124d
+deleted: sha256:80ecc01d284ae35230d0d4498ea238fadbfab61a3987ea19c4ec58ad9df2c32b
+deleted: sha256:4881ef77722a1c5eb170c463cc5394233e97450d2ea04a62bb1dab700bce3009
+deleted: sha256:cea3438b7c3bec827cb333da8f6e2f71533e82d95a6f323ec08de2101c3aabc6
+deleted: sha256:5b1bf0036e68e226dbd639ad292d422cc7b54da015613ab9316028c005ddf987
+deleted: sha256:6ee76839e2273f305b83e8f92cc6f8148f49178d6e134e864642e75e0ab7029d
+deleted: sha256:0822a1b9addfe3117ee2dfb952c9ea0375bea2b812d6fd837233718784b5a0cf
+deleted: sha256:23500fb6b1a5542379f65b4e5cd6254edd74137272bdee765f686de59fe4d850
+deleted: sha256:2e2ec58f3d469a49c15a3f0e67331b009c09a2362ebea4f768d93f7dad04bd30
+deleted: sha256:7888fa1a1df3090aef45def9587dbcaab6d924a8ef735ba09790a384f49d954d
+deleted: sha256:eab11f10dc6bb18458d28e67a426d32b3cc29cbd381f7b5b1841654932bbdb0e
+deleted: sha256:b5df1d3430ae8c1f0bdc53e98bd49f51c43339123f63dc4989af9b562fe12c30
+deleted: sha256:a98f66c79cfbd3b0efabb30f888240cc53213b40c1f46ff7322eebe5d3db7483
+deleted: sha256:dc072c681aaea66a8b6d4b6058b431f91d91939661cd36d6c711d2206cc6b8ad
+deleted: sha256:167ecfd56aa55bbc232529e0380f9c723348f892e8f4013b341a0db79c7f3e46
+deleted: sha256:e1099a5ee7a46a8c35ac05a94c9bd6371259a37ebb18c391536a10bdb6d30881
+deleted: sha256:e137c42d93f8dd374fef859b015a3cf3984f8af5c988637f819b4232e5712f76
+deleted: sha256:e89d9e572312e9a0135df9598c8f1e46ad0103681c509cfcad7c52d14eea9269
+deleted: sha256:f426a41bfb2f976a47c806d37744504f74bddd0e26e9deaf344fdbc5335de1de
+deleted: sha256:4eb1ef41ea092171ca9ea4dcec920a28deed15df2881c00614058a7cd6e8fbb0
+deleted: sha256:59e789344f98aa317d9aa01273d4a5c2fbd5e9d3c740ffd2a96a4e21f68b7a5a
+deleted: sha256:1f2ab228166525b6aec0571464ad82d5bc083b01f48375835f76d762111c1876
+deleted: sha256:a653f8213d114c2526976dea05b127d26e16fcc02cc1f0f4ca386ea98ecb146a
+deleted: sha256:a3cff16d2412178ac06f25e99af46f6d012a6cc50cb683b41156ca6214ad29ab
+deleted: sha256:3168a745b0e73f36ef3aeb5f3f83d13169c311ddb96b65a5b8caf67eb7ff6d56
+deleted: sha256:242c4b4d924db8f05bd0893a931f90cf0cad259a4afb49ceeb40afc67319f3d1
+
+Total reclaimed space: 1.349GB
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$ docker image ls
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+paketobuildpacks/run              base-cnb         ebda85cf0d59   4 days ago      88.2MB
+confluentinc/ksqldb-examples      7.2.1            ae252c2780c4   10 months ago   815MB
+confluentinc/cp-ksqldb-server     7.2.1            140d2ac32177   10 months ago   1.36GB
+confluentinc/cp-ksqldb-cli        7.2.1            287039530a46   10 months ago   857MB
+confluentinc/cp-schema-registry   7.2.1            afaac043dcc1   10 months ago   1.86GB
+confluentinc/cp-kafka             7.2.1            d893473a6510   10 months ago   782MB
+confluentinc/cp-kafka             latest           d893473a6510   10 months ago   782MB
+confluentinc/cp-zookeeper         7.2.1            3f28db6a433d   10 months ago   782MB
+confluentinc/cp-zookeeper         latest           3f28db6a433d   10 months ago   782MB
+confluentinc/cp-kafka-rest        7.2.1            784b8061ad0c   10 months ago   1.76GB
+cnfldemos/kafka-connect-datagen   0.5.3-7.1.0      de0e2396b904   13 months ago   1.46GB
+zookeeper                         3.6.2            a72350516291   2 years ago     268MB
+bsucaciu/kafka                    2.6.0            cbe9ab39d5fc   2 years ago     642MB
+bsucaciu/kerberos-producer        1.0.0            eb27c056cc20   2 years ago     354MB
+bsucaciu/kerberos-consumer        1.0.0            5486c13e058b   2 years ago     354MB
+bsucaciu/kerberos                 krb5             ce76df4cb4a8   2 years ago     61MB
+catalog-service-03                0.0.1-SNAPSHOT   6b4c778c3417   43 years ago    276MB
+paketobuildpacks/builder          base             71badb65e5f6   43 years ago    1.41GB
+catalog-service                   0.0.1-SNAPSHOT   60795747b2e6   43 years ago    274MB
+
+willem@linux-laptop:~/git/cloud-native-spring-in-action/Chapter03/03-oo/catalog-service-03$
+

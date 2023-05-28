@@ -1,3 +1,40 @@
+<style>
+body {
+  font-family: "Gentium Basic", Cardo , "Linux Libertine o", "Palatino Linotype", Cambria, serif;
+  font-size: 130% !important;
+}
+code {
+	padding: 0 .25em;
+	
+	white-space: pre;
+	font-family: "Tlwg mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	
+	background-color: #ECFFFA;
+	//border: 1px solid #ccc;
+	//border-radius: 3px;
+}
+
+kbd {
+	display: inline-block;
+	padding: 3px 5px;
+	font-family: "Tlwg mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	line-height: 10px;
+	color: #555;
+	vertical-align: middle;
+	background-color: #ECFFFA;
+	border: solid 1px #ccc;
+	border-bottom-color: #bbb;
+	border-radius: 3px;
+	box-shadow: inset 0 -1px 0 #bbb;
+}
+
+h1,h2,h3,h4,h5 {
+  color: #269B7D; 
+  font-family: "fira sans", "Latin Modern Sans", Calibri, "Trebuchet MS", sans-serif;
+}
+
+</style>
+
 # Docker
 
 ## Creating an image with Spring Boot
@@ -47,6 +84,21 @@ At [https://www.composerize.com/](https://www.composerize.com/) we can convert a
 `docker-compose.yml` file as a starting point to use docker compose.
 
 We can find the result in [../Chapter02/02-oo/catalog-service-02/docker-compose.yml](../Chapter02/02-oo/catalog-service-02/docker-compose.yml).
+
+## Adding a chapter suffix to our application name will change the name of our image
+As we add n-oo directories for our own development building experiments, and we could get a clash between
+different chapter versions of the same application modules like catalog-service we will choose to extend them
+with the chapter number n as -n suffix in 
+- the application root dir name (within `Chaptern/n-oo/`), 
+- the project/artifactId and
+- project/name values of the pom.xml file.
+
+Therefore, for Chapter03 the name of the root dir, maven artifacId and project name will be `catalog-service-03`.
+The consequence is that the name of the Docker image will be
+`catalog-service-03:0.0.1-SNAPSHOT` and of the fat jar `target/catalog-service-03-0.0.1-SNAPSHOT.jar`.
+
+Beware, that the `-03` suffix in the image name should also be reflected in the 
+[../Chapter03/03-oo/catalog-service-03/docker-compose.yml](../Chapter03/03-oo/catalog-service-03/docker-compose.yml)
 
 ## Running with docker compose
 ```bash

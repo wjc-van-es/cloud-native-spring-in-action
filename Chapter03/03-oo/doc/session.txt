@@ -1,5 +1,5 @@
 We read the first two sections 3.1 and 3.2.
-As we add n-oo directories for our own development building experiments and we could get a clash between
+As we add n-oo directories for our own development building experiments, and we could get a clash between
 different chapter versions of the same application modules like catalog-service we will choose to extend them
 with the chapter number n in the root dir name, the project/artifactId and project/name values of the pom.xml
 file. Therefore, for this being Chapter03 the name will be catalog-service-03.

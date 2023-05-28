@@ -1,0 +1,102 @@
+## From docker volume ls --format "{{.Mountpoint}}" we find that volumes are stored at
+## /var/lib/docker/volumes/
+## Therefore we will probe /var/lib/docker/ a bit more
+
+## sudo cd doesn't work which could be mitigated by opening a terminal as root:
+willem@linux-laptop:~$ sudo -s
+   root@linux-laptop:/home/willem# cd /var/lib/docker
+   root@linux-laptop:/var/lib/docker# ls -la
+   total 100
+   drwx--x---  13 root root  4096 mei 28 20:21 .
+   drwxr-xr-x  85 root root  4096 aug 12  2022 ..
+   drwx--x--x   4 root root  4096 mei 17 12:23 buildkit
+   drwx--x---   2 root root  4096 mei 28 23:12 containers
+   -rw-------   1 root root    59 feb  2 14:24 engine-id
+   drwx------   3 root root  4096 aug 12  2022 image
+   drwxr-x---   3 root root  4096 aug 12  2022 network
+   drwx--x--- 247 root root 45056 mei 28 23:28 overlay2
+   drwx------   4 root root  4096 aug 12  2022 plugins
+   drwx------   2 root root  4096 mei 28 20:21 runtimes
+   drwx------   2 root root  4096 aug 12  2022 swarm
+   drwx------   2 root root  4096 mei 28 22:15 tmp
+   drwx------   2 root root  4096 aug 12  2022 trust
+   drwx-----x  33 root root  4096 mei 28 22:15 volumes
+   root@linux-laptop:/var/lib/docker# cd image
+
+## On the other hand using sudo ls would be safer:
+willem@linux-laptop:~$ sudo ls -la /var/lib/docker/
+total 100
+drwx--x---  13 root root  4096 mei 28 20:21 .
+drwxr-xr-x  85 root root  4096 aug 12  2022 ..
+drwx--x--x   4 root root  4096 mei 17 12:23 buildkit
+drwx--x---   2 root root  4096 mei 28 23:12 containers
+-rw-------   1 root root    59 feb  2 14:24 engine-id
+drwx------   3 root root  4096 aug 12  2022 image
+drwxr-x---   3 root root  4096 aug 12  2022 network
+drwx--x--- 247 root root 45056 mei 28 23:28 overlay2
+drwx------   4 root root  4096 aug 12  2022 plugins
+drwx------   2 root root  4096 mei 28 20:21 runtimes
+drwx------   2 root root  4096 aug 12  2022 swarm
+drwx------   2 root root  4096 mei 28 22:15 tmp
+drwx------   2 root root  4096 aug 12  2022 trust
+drwx-----x  33 root root  4096 mei 28 22:15 volumes
+willem@linux-laptop:~$ sudo ls -la /var/lib/docker/image
+total 12
+drwx------  3 root root 4096 aug 12  2022 .
+drwx--x--- 13 root root 4096 mei 28 20:21 ..
+drwx------  5 root root 4096 mei 28 23:28 overlay2
+willem@linux-laptop:~$ sudo ls -la /var/lib/docker/image/overlay2
+total 28
+drwx------ 5 root root 4096 mei 28 23:28 .
+drwx------ 3 root root 4096 aug 12  2022 ..
+drwx------ 4 root root 4096 aug 12  2022 distribution
+drwx------ 4 root root 4096 aug 12  2022 imagedb
+drwx------ 5 root root 4096 aug 12  2022 layerdb
+-rw------- 1 root root 5113 mei 28 23:28 repositories.json
+willem@linux-laptop:~$ sudo ls -la /var/lib/docker/image/overlay2/imagedb
+total 16
+drwx------ 4 root root 4096 aug 12  2022 .
+drwx------ 5 root root 4096 mei 28 23:28 ..
+drwx------ 3 root root 4096 aug 12  2022 content
+drwx------ 3 root root 4096 aug 12  2022 metadata
+willem@linux-laptop:~$ sudo ls -la /var/lib/docker/image/overlay2/imagedb/content
+total 12
+drwx------ 3 root root 4096 aug 12  2022 .
+drwx------ 4 root root 4096 aug 12  2022 ..
+drwx------ 2 root root 4096 mei 28 23:28 sha256
+willem@linux-laptop:~$ sudo ls -la /var/lib/docker/image/overlay2/imagedb/content/sha256
+total 440
+drwx------ 2 root root   4096 mei 28 23:28 .
+drwx------ 3 root root   4096 aug 12  2022 ..
+-rw------- 1 root root  23771 aug 15  2022 140d2ac32177e5b239ddfcf07efd484b0612d2667c27d255330a824a8678830b
+-rw------- 1 root root  21870 aug 15  2022 287039530a46b0ab7caf29dce7a9a1a664ae5751fd462b19ab6770b9a181d0c5
+-rw------- 1 root root  20751 aug 13  2022 3f28db6a433dc8aa2583a3d975b04758297112123be582e2754eadb820fc1fe2
+-rw------- 1 root root   5821 sep  4  2022 5486c13e058b070a444ce4af40dd0746cb52d3ede67b7bb43750c7eafa4cfaff
+-rw------- 1 root root  30046 apr 11 00:21 60795747b2e659f4a5c5694a0644004b8098745217863be921eed0ab64ada1c8
+-rw------- 1 root root  30103 mei 28 22:15 6b4c778c3417d2ac6193254bb657fe4cde819a9377ca1a1fd1e5a4da60483048
+-rw------- 1 root root 116109 mei 28 22:14 71badb65e5f6cf88e3fe1131a1d3b60245d0ae95172750c3fe0818a2122c83e9
+-rw------- 1 root root  19475 aug 15  2022 784b8061ad0c5ee0d00f530a733037c7d8131c1d81a5932660db3f283c6a69ee
+-rw------- 1 root root  10760 aug 28  2022 a7235051629107a4f917d998b529717061192c2f8ab8c619f40f52950b4007ca
+-rw------- 1 root root  17497 aug 15  2022 ae252c2780c403d3fe84a323df8e65d0967f8bcb3d9d1409f536c0d170c0031e
+-rw------- 1 root root  21084 aug 15  2022 afaac043dcc132cde82cb7bf45f5a8d3c4382d938487e4c969615bb8a337a13f
+-rw------- 1 root root  10848 aug 28  2022 cbe9ab39d5fc8715a76850206075efedd51bde2a3c4f19d94620fa2f18d04ac1
+-rw------- 1 root root   3244 sep  3  2022 ce76df4cb4a89221bae301beb0daf835f8ec0fb92d7beb41010917889351a872
+-rw------- 1 root root  20363 aug 13  2022 d893473a6510aca0c04ba50cc1cf72261b7a76a49b87373a848eeaf0402e1fd2
+-rw------- 1 root root  27095 aug 15  2022 de0e2396b9044722d8b5c6bd465fac7f1c98fd4d557b2e323d6b2353226deaf2
+-rw------- 1 root root   5822 sep  4  2022 eb27c056cc2097546ea3a0441585cc423955c214dfe9091888512fd91ea07a2b
+-rw------- 1 root root  23956 mei 28 22:14 ebda85cf0d592cfcac7019ce4e6b27b6b6a8ae640115cf0cabd09d47b888bc4f
+
+## From
+## docker image ls
+## we found:
+REPOSITORY                        TAG              IMAGE ID       CREATED         SIZE
+...
+catalog-service-03                0.0.1-SNAPSHOT   6b4c778c3417   43 years ago    276MB
+...
+## Combining the previous ls command with | grep IMAGE_ID (= 6b4c778c3417 being the first 12 characters of the
+## complete sha256 hash)
+## We find the actual location of our image
+willem@linux-laptop:~$ sudo ls -la /var/lib/docker/image/overlay2/imagedb/content/sha256 | grep 6b4c778c3417
+-rw------- 1 root root  30103 mei 28 22:15 6b4c778c3417d2ac6193254bb657fe4cde819a9377ca1a1fd1e5a4da60483048
+willem@linux-laptop:~$
+
