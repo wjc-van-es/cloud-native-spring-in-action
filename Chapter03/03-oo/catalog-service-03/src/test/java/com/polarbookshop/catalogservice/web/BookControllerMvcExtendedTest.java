@@ -18,6 +18,7 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -43,27 +44,32 @@ class BookControllerMvcExtendedTest {
     @Test
     void whenGetBookNotExistingThenShouldReturn404() throws Exception {
         String isbn = "73737313940";
-        given(bookService.viewBookDetails(isbn)).willThrow(BookNotFoundException.class);
+        String msg = "The book with ISBN " + isbn + " was not found.";
+        given(bookService.viewBookDetails(isbn)).willThrow(new BookNotFoundException(isbn));
         mockMvc
                 .perform(
                         get("/books/" + isbn)
                                 .accept(MediaType.APPLICATION_JSON)
                                 .header("Authorization", "Bearer header.body.sig"))
                 .andDo(print())
-                .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound()) // The right HTTP status 404 is returned
+                .andExpect(jsonPath("$").value(msg)); //The response body contains the message from the ex
     }
 
     @Test
     void whenIsbnIsInvalidThenShouldReturn400() throws Exception {
-        var book = new Book("1234561232", "The meaning of nothing", "B. McNair", 24.95);
+        var isbn = "1234561232";
+        var msg = "A book with ISBN " + isbn + " already exists.";
+        var book = new Book(isbn, "The meaning of nothing", "B. McNair", 24.95);
         String content = objectMapper.writeValueAsString(book);
-        given(bookService.addBookToCatalog(book)).willThrow(BookAlreadyExistsException.class);
+        given(bookService.addBookToCatalog(book)).willThrow(new BookAlreadyExistsException(isbn));
         mockMvc
                 .perform(post("/books")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(content))
                 .andDo(print())
-                .andExpect(status().isUnprocessableEntity());
+                .andExpect(status().isUnprocessableEntity()) // The right HTTP status 422 is returned
+                .andExpect(jsonPath("$").value(msg)); //The response body contains the message from the ex
     }
 
 }

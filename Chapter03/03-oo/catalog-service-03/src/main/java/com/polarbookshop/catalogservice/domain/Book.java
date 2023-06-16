@@ -20,7 +20,4 @@ public record Book(
         @Positive(
                 message = "The book price must be greater than zero."
         )
-        Double price
-
-) {
-}
+        Double price) { }
